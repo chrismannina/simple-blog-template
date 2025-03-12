@@ -101,8 +101,39 @@ export default {
 				'fade-out': 'fade-out 0.3s ease-out',
 				'slide-up': 'slide-up 0.4s ease-out',
 				'slide-down': 'slide-down 0.4s ease-out',
-			}
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						maxWidth: 'none',
+						color: 'inherit',
+						a: {
+							color: 'inherit',
+							textDecoration: 'none',
+							fontWeight: 'inherit',
+						},
+						blockquote: {
+							fontStyle: 'italic',
+							borderLeftWidth: '0.25rem',
+							borderLeftColor: 'var(--border)',
+							quotes: 'none',
+						},
+						img: {
+							borderRadius: 'var(--radius)',
+						},
+						code: {
+							color: 'inherit',
+						},
+						'h1,h2,h3,h4': {
+							fontWeight: 'inherit',
+						},
+					},
+				},
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/typography"),
+	],
 } satisfies Config;
