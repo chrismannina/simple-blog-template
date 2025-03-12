@@ -1,0 +1,79 @@
+
+import matter from "gray-matter";
+
+export interface PostMeta {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  tags?: string[];
+  coverImage?: string;
+}
+
+// This is a mock function that simulates loading posts from markdown files
+// In a real implementation, you would use a library like 'import.meta.glob'
+// or a Node.js-based solution to read files from the filesystem
+export async function getAllPosts(): Promise<PostMeta[]> {
+  // In a real implementation, this would read files from the file system
+  const mockPosts = [
+    {
+      slug: "hello-world",
+      content: await import("@/posts/hello-world.md?raw").then(module => module.default),
+    },
+    {
+      slug: "markdown-guide",
+      content: await import("@/posts/markdown-guide.md?raw").then(module => module.default),
+    },
+  ];
+
+  // Parse frontmatter from each post
+  const posts = mockPosts.map(({ slug, content }) => {
+    const { data } = matter(content);
+    return {
+      slug,
+      title: data.title || "Untitled Post",
+      date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+      excerpt: data.excerpt || "",
+      tags: data.tags || [],
+      coverImage: data.coverImage || "",
+    };
+  });
+
+  // Sort posts by date (newest first)
+  return posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+}
+
+// Get a single post by slug
+export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; content: string }> {
+  try {
+    let postContent;
+    
+    // In a real implementation, you would dynamically import the post file
+    if (slug === "hello-world") {
+      postContent = await import("@/posts/hello-world.md?raw").then(module => module.default);
+    } else if (slug === "markdown-guide") {
+      postContent = await import("@/posts/markdown-guide.md?raw").then(module => module.default);
+    } else {
+      throw new Error(`Post not found: ${slug}`);
+    }
+    
+    const { data, content } = matter(postContent);
+    
+    return {
+      meta: {
+        slug,
+        title: data.title || "Untitled Post",
+        date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+        excerpt: data.excerpt || "",
+        tags: data.tags || [],
+        coverImage: data.coverImage || "",
+      },
+      content,
+    };
+  } catch (error) {
+    console.error(`Error loading post ${slug}:`, error);
+    throw new Error(`Post not found: ${slug}`);
+  }
+}
