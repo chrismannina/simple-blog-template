@@ -24,6 +24,18 @@ export async function getAllPosts(): Promise<PostMeta[]> {
       slug: "markdown-guide",
       content: await import("@/posts/markdown-guide.md?raw").then(module => module.default),
     },
+    {
+      slug: "simplicity-in-design",
+      content: await import("@/posts/simplicity-in-design.md?raw").then(module => module.default),
+    },
+    {
+      slug: "web-development-trends",
+      content: await import("@/posts/web-development-trends.md?raw").then(module => module.default),
+    },
+    {
+      slug: "minimalist-workspace",
+      content: await import("@/posts/minimalist-workspace.md?raw").then(module => module.default),
+    },
   ];
 
   // Parse frontmatter from each post
@@ -55,6 +67,12 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
       postContent = await import("@/posts/hello-world.md?raw").then(module => module.default);
     } else if (slug === "markdown-guide") {
       postContent = await import("@/posts/markdown-guide.md?raw").then(module => module.default);
+    } else if (slug === "simplicity-in-design") {
+      postContent = await import("@/posts/simplicity-in-design.md?raw").then(module => module.default);
+    } else if (slug === "web-development-trends") {
+      postContent = await import("@/posts/web-development-trends.md?raw").then(module => module.default);
+    } else if (slug === "minimalist-workspace") {
+      postContent = await import("@/posts/minimalist-workspace.md?raw").then(module => module.default);
     } else {
       throw new Error(`Post not found: ${slug}`);
     }
