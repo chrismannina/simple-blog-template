@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { cn } from "@/lib/utils";
+import { Components } from "react-markdown";
 
 interface MarkdownRendererProps {
   content: string;
@@ -15,9 +16,9 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
       className={cn("prose-custom", className)}
       remarkPlugins={[remarkGfm]}
       components={{
-        code({ node, inline, className, children, ...props }) {
+        code({ node, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
-          return !inline && match ? (
+          return match ? (
             <SyntaxHighlighter
               language={match[1]}
               PreTag="div"
