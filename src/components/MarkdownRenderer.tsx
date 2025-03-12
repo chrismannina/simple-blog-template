@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { cn } from "@/lib/utils";
-import { Components } from "react-markdown";
 
 interface MarkdownRendererProps {
   content: string;
