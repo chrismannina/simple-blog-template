@@ -10,6 +10,9 @@ interface MarkdownRendererProps {
 }
 
 const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
+  // Ensure we're only rendering the actual content, not the frontmatter
+  const contentToRender = content || "";
+  
   return (
     <ReactMarkdown
       className={cn("prose-custom", className)}
@@ -84,7 +87,7 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
         },
       }}
     >
-      {content}
+      {contentToRender}
     </ReactMarkdown>
   );
 };

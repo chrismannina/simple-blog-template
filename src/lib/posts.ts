@@ -41,13 +41,16 @@ export async function getAllPosts(): Promise<PostMeta[]> {
   // Parse frontmatter from each post
   const posts = mockPosts.map(({ slug, content }) => {
     try {
+      // Properly parse the markdown content with gray-matter
       const { data } = matter(content);
+      
+      // Ensure we extract and format metadata correctly
       return {
         slug,
         title: data.title || "Untitled Post",
         date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
         excerpt: data.excerpt || "",
-        tags: data.tags || [],
+        tags: Array.isArray(data.tags) ? data.tags : [],
         coverImage: data.coverImage || "",
       };
     } catch (error) {
@@ -89,20 +92,21 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
       throw new Error(`Post not found: ${slug}`);
     }
     
-    // Parse the frontmatter and content
+    // Parse the frontmatter and content using gray-matter
     const parsed = matter(postContent);
     
-    // Ensure we're properly extracting the data from frontmatter
+    // Debug output to verify the parsing
+    console.log("Parsed frontmatter:", parsed.data);
+    
     return {
       meta: {
         slug,
-        title: parsed.data.title || "Untitled Post",
+        title: String(parsed.data.title) || "Untitled Post",
         date: parsed.data.date ? new Date(parsed.data.date).toISOString() : new Date().toISOString(),
-        excerpt: parsed.data.excerpt || "",
-        tags: parsed.data.tags || [],
-        coverImage: parsed.data.coverImage || "",
+        excerpt: String(parsed.data.excerpt || ""),
+        tags: Array.isArray(parsed.data.tags) ? parsed.data.tags : [],
+        coverImage: String(parsed.data.coverImage || ""),
       },
-      // Only return the actual content, not the frontmatter
       content: parsed.content,
     };
   } catch (error) {
