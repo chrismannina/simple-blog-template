@@ -14,7 +14,7 @@ const BlogLayout = ({ children, className }: BlogLayoutProps) => {
   return (
     <div className={`min-h-screen flex flex-col bg-background ${`theme-${blogConfig.design.accentColor || 'indigo'}`}`}>
       <Navbar />
-      <main className={cn("flex-1 transition-all duration-300 animate-fade-in", className)}>
+      <main className={cn("flex-1 transition-all duration-300 animate-fade-in pb-12", className)}>
         {children}
       </main>
       <Footer />

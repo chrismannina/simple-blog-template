@@ -12,27 +12,30 @@ interface PostCardProps {
 const PostCard = ({ post, featured = false }: PostCardProps) => {
   return (
     <article 
-      className={`group flex flex-col overflow-hidden transition-all duration-300 ${
+      className={`group paper-note ${
         featured 
-          ? "lg:flex-row bg-secondary/30" 
-          : "hover:translate-y-[-4px] border-b border-border last:border-b-0 pb-8 mb-8 last:pb-0 last:mb-0"
+          ? "accent-purple lg:flex gap-6 items-center py-6" 
+          : "accent-blue hover:shadow-lg transition-all duration-300"
       }`}
     >
       {post.coverImage && (
         <Link
           to={`/blog/${post.slug}`}
-          className={`block overflow-hidden ${featured ? "lg:w-1/2" : "aspect-video rounded-md mb-6"}`}
+          className={`block overflow-hidden ${featured ? "lg:w-1/2" : "mb-4 rounded-sm"}`}
         >
-          <div 
-            className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          <img 
+            src={post.coverImage} 
+            alt={post.title}
+            className="w-full object-cover transition-transform duration-500 group-hover:scale-105 border border-gray-100"
             style={{ 
-              backgroundImage: `url(${post.coverImage})` 
+              height: featured ? '300px' : '200px',
+              objectFit: 'cover'
             }}
           />
         </Link>
       )}
       
-      <div className={`flex flex-col ${featured ? "lg:w-1/2 lg:pl-8" : ""}`}>
+      <div className={`flex flex-col ${featured ? "lg:w-1/2" : ""}`}>
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {post.tags.slice(0, 2).map((tag) => (
@@ -44,7 +47,7 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
         )}
         
         <Link to={`/blog/${post.slug}`}>
-          <h2 className={`${featured ? "text-2xl md:text-3xl" : "text-xl"} font-semibold mb-2 group-hover:text-accent transition-colors`}>
+          <h2 className={`${featured ? "text-2xl md:text-3xl" : "text-xl"} font-bold mb-2 group-hover:text-accent transition-colors`}>
             {post.title}
           </h2>
         </Link>

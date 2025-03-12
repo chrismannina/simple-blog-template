@@ -39,36 +39,53 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 md:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6 animate-slide-up">
-            {blogConfig.description}
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-up [animation-delay:200ms]">
-            {blogConfig.author.bio}
-          </p>
+      <section className="pt-32 pb-12 px-6 md:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex justify-center mb-8">
+            <h1 className="title-badge">BREAKDOWN</h1>
+          </div>
+          <div className="paper-note accent-purple">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-primary">
+              {blogConfig.title}
+            </h2>
+            <p className="text-lg text-muted-foreground mb-4">
+              {blogConfig.description}
+            </p>
+            <p className="text-muted-foreground mb-4">
+              {blogConfig.author.bio}
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Featured Post */}
-      <section className="py-16 px-6 md:px-8 bg-secondary/20">
+      <section className="py-12 px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-semibold mb-8">Featured</h2>
+          <div className="paper-note accent-green pl-12 mb-6">
+            <h2 className="text-xl font-bold text-green-600">Title</h2>
+            <p className="text-sm text-muted-foreground">Include key search terms that readers will most likely search for</p>
+          </div>
+          
           {loading ? (
-            <div className="h-96 rounded-lg bg-muted animate-pulse" />
+            <div className="h-96 rounded-lg bg-white animate-pulse" />
           ) : featuredPost ? (
             <PostCard post={featuredPost} featured />
           ) : (
-            <p className="text-muted-foreground">No posts yet. Create your first post!</p>
+            <p className="text-muted-foreground paper-note">No posts yet. Create your first post!</p>
           )}
         </div>
       </section>
 
       {/* Recent Posts */}
-      <section className="py-16 px-6 md:px-8">
+      <section className="py-12 px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
+          <div className="paper-note accent-blue pl-12 mb-6">
+            <h2 className="text-xl font-bold text-blue-600">Intro</h2>
+            <p className="text-sm text-muted-foreground">Quickly highlight the benefits and give some reasons why</p>
+          </div>
+          
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-xl font-semibold">Recent Posts</h2>
+            <h2 className="text-xl font-bold">Recent Posts</h2>
             {recentPosts.length > 0 && (
               <Link
                 to="/archive"
@@ -100,13 +117,13 @@ const Home = () => {
               ))}
             </div>
           ) : recentPosts.length > 0 ? (
-            <div className="space-y-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {recentPosts.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
           ) : (
-            <p className="text-muted-foreground">No recent posts available.</p>
+            <p className="text-muted-foreground paper-note">No recent posts available.</p>
           )}
         </div>
       </section>

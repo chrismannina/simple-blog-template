@@ -28,6 +28,7 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
                 margin: "1.5rem 0",
                 borderRadius: "0.5rem",
                 fontSize: "0.875rem",
+                border: "1px solid #e2e8f0",
               }}
               {...props}
             >
@@ -36,7 +37,7 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
           ) : (
             <code
               className={cn(
-                "bg-muted px-1.5 py-0.5 rounded text-sm font-mono",
+                "bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono",
                 className
               )}
               {...props}
@@ -49,7 +50,7 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
           return (
             <a
               className={cn(
-                "text-primary underline-offset-4 hover:underline",
+                "text-accent underline-offset-4 hover:underline",
                 className
               )}
               target="_blank"
@@ -64,7 +65,7 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
           return (
             <img
               className={cn(
-                "rounded-lg my-8 w-full object-cover", 
+                "rounded-lg my-8 w-full object-cover border border-gray-200 shadow-sm", 
                 className
               )}
               loading="lazy"
@@ -76,13 +77,39 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
           return (
             <blockquote
               className={cn(
-                "border-l-4 border-primary/30 pl-4 italic text-muted-foreground",
+                "paper-note accent-blue my-6 not-italic",
                 className
               )}
               {...props}
             >
               {children}
             </blockquote>
+          );
+        },
+        h2({ node, className, children, ...props }) {
+          return (
+            <h2
+              className={cn(
+                "text-2xl font-bold mt-8 mb-4 text-primary",
+                className
+              )}
+              {...props}
+            >
+              {children}
+            </h2>
+          );
+        },
+        h1({ node, className, children, ...props }) {
+          return (
+            <h1
+              className={cn(
+                "text-3xl font-bold mb-6 mt-8 text-primary",
+                className
+              )}
+              {...props}
+            >
+              {children}
+            </h1>
           );
         },
       }}

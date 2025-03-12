@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 225 25% 97%;
+    --foreground: 220 30% 10%;
     
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 220 30% 10%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 220 30% 10%;
     
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 222 47% 20%;
+    --primary-foreground: 210 40% 98%;
     
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11.2%;
     
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 220 25% 40%;
     
-    --accent: 221 83% 53%;
+    --accent: 243 75% 59%;
     --accent-foreground: 210 40% 98%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 221 83% 53%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 243 75% 59%;
     
     --radius: 0.3rem;
   }
@@ -53,12 +53,16 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-synthesis-weight: none;
+    background-image: linear-gradient(rgba(189, 195, 208, 0.2) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(189, 195, 208, 0.2) 1px, transparent 1px);
+    background-size: 25px 25px;
+    background-position: center center;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-sm;
+    @apply bg-white/90 backdrop-blur-lg border border-white/20 shadow-sm;
   }
   
   .fade-mask-b {
@@ -76,6 +80,61 @@
       prose-p:leading-relaxed prose-p:my-4
       prose-img:rounded-lg
       prose-pre:bg-zinc-50;
+  }
+  
+  .paper-note {
+    @apply bg-white p-6 rounded-sm shadow-md relative border border-gray-200;
+    position: relative;
+  }
+  
+  .paper-note::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: #f1f5f9 #f8fafc;
+  }
+  
+  .paper-note.accent-blue::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8px;
+    background-color: theme('colors.blue.500');
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .paper-note.accent-purple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8px;
+    background-color: theme('colors.purple.500');
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .paper-note.accent-green::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8px;
+    background-color: theme('colors.green.500');
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .title-badge {
+    @apply bg-primary text-white px-5 py-2 rounded-full text-xl font-bold inline-block;
   }
 }
 
@@ -104,9 +163,9 @@
 
 /* Theme variations */
 .theme-indigo {
-  --accent: 238 82% 60%;
+  --accent: 243 75% 59%;
   --accent-foreground: 210 40% 98%;
-  --ring: 238 82% 60%;
+  --ring: 243 75% 59%;
 }
 
 .theme-blue {
