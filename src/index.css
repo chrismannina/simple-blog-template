@@ -66,7 +66,7 @@
   }
   
   .prose-custom {
-    @apply prose prose-zinc prose-quoteless max-w-none
+    @apply prose prose-zinc max-w-none
       prose-headings:font-semibold
       prose-h1:text-3xl prose-h1:font-semibold
       prose-h2:text-2xl prose-h2:font-semibold
