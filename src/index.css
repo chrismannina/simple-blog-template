@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,39 +7,39 @@
 
 @layer base {
   :root {
-    --background: 225 25% 97%;
-    --foreground: 220 30% 10%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
     
     --card: 0 0% 100%;
-    --card-foreground: 220 30% 10%;
+    --card-foreground: 222 47% 11%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 10%;
+    --popover-foreground: 222 47% 11%;
     
-    --primary: 222 47% 20%;
+    --primary: 222 47% 11%;
     --primary-foreground: 210 40% 98%;
     
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11.2%;
     
     --muted: 210 40% 96.1%;
-    --muted-foreground: 220 25% 40%;
+    --muted-foreground: 215 16% 47%;
     
     --accent: 243 75% 59%;
     --accent-foreground: 210 40% 98%;
     
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
     
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 243 75% 59%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 4.9%;
     
-    --radius: 0.3rem;
+    --radius: 0.5rem;
   }
   
   * {
-    @apply border-border selection:bg-accent/10 selection:text-accent;
+    @apply border-border selection:bg-accent/20 selection:text-accent;
   }
   
   html {
@@ -46,110 +47,65 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
   
   body {
     @apply bg-background text-foreground antialiased;
-    font-synthesis-weight: none;
-    background-image: 
-      linear-gradient(to right, rgba(189, 195, 208, 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(189, 195, 208, 0.3) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: center center;
+    font-family: 'Inter', sans-serif;
   }
 }
 
 @layer components {
-  .glass-panel {
-    @apply bg-white/90 backdrop-blur-lg border border-white/20 shadow-sm;
-  }
-  
-  .fade-mask-b {
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  .blog-container {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-0;
   }
   
   .prose-custom {
-    @apply prose prose-zinc max-w-none
-      prose-headings:font-semibold
-      prose-h1:text-3xl prose-h1:font-semibold
-      prose-h2:text-2xl prose-h2:font-semibold
-      prose-h3:text-xl 
-      prose-pre:rounded-lg prose-pre:border prose-pre:border-zinc-200
-      prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-      prose-p:leading-relaxed prose-p:my-4
-      prose-img:rounded-lg
-      prose-pre:bg-zinc-50;
+    @apply prose prose-slate max-w-none
+      prose-headings:font-serif prose-headings:font-medium
+      prose-h1:text-3xl prose-h1:mb-6
+      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
+      prose-p:leading-relaxed prose-p:my-6
+      prose-pre:rounded-md prose-pre:border-border
+      prose-a:text-accent prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+      prose-img:rounded-lg prose-img:my-10 prose-img:mx-auto prose-img:shadow-sm
+      prose-blockquote:border-l-accent/50 prose-blockquote:bg-accent/5 prose-blockquote:rounded-r-md prose-blockquote:pl-6 prose-blockquote:py-2;
   }
   
-  .paper-note {
-    @apply bg-white p-6 rounded-md shadow-md relative border-2 border-gray-200;
-    position: relative;
+  .blog-card {
+    @apply bg-white rounded-lg shadow-sm border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
   }
   
-  .paper-note::after {
+  .blog-tag {
+    @apply text-xs font-medium px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-accent;
+  }
+  
+  .section-title {
+    @apply font-serif text-2xl md:text-3xl font-semibold text-primary mb-6 relative inline-block;
+  }
+  
+  .section-title::after {
     content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 24px 24px 0;
-    border-style: solid;
-    border-color: #e5e7eb #f8fafc;
-    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.05);
+    @apply absolute -bottom-2 left-0 h-1 w-1/3 bg-accent rounded-full;
   }
   
-  .paper-note.accent-blue::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 10px;
-    background-color: theme('colors.blue.500');
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  
-  .paper-note.accent-purple::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 10px;
-    background-color: theme('colors.purple.500');
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  
-  .paper-note.accent-green::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 10px;
-    background-color: theme('colors.green.500');
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  
-  .title-badge {
-    @apply bg-primary text-white px-5 py-2 rounded-full text-xl font-bold inline-block shadow-md;
-    border: 2px solid #fff;
+  .featured-post-card {
+    @apply bg-gradient-to-br from-white to-secondary/20 border border-border rounded-lg shadow-md p-6 md:p-8;
   }
 }
 
 /* Page transition animations */
 .page-transitions-enter {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(10px);
 }
 
 .page-transitions-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 400ms, transform 400ms;
+  transition: opacity 500ms, transform 500ms;
 }
 
 .page-transitions-exit {
@@ -159,7 +115,7 @@
 
 .page-transitions-exit-active {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   transition: opacity 300ms, transform 300ms;
 }
 
@@ -187,3 +143,4 @@
   --accent-foreground: 0 0% 20%;
   --ring: 43 96% 56%;
 }
+

@@ -12,13 +12,11 @@ interface BlogLayoutProps {
 
 const BlogLayout = ({ children, className }: BlogLayoutProps) => {
   return (
-    <div className={`min-h-screen flex flex-col bg-background ${`theme-${blogConfig.design.accentColor || 'indigo'}`}`}>
+    <div className={`min-h-screen flex flex-col ${`theme-${blogConfig.design.accentColor || 'indigo'}`}`}>
       <Navbar />
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto pt-20">
         <main className={cn("flex-1 transition-all duration-300 animate-fade-in pb-16", className)}>
-          <div className="w-full max-w-5xl mx-auto">
-            {children}
-          </div>
+          {children}
         </main>
       </div>
       <Footer />

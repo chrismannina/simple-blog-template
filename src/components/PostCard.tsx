@@ -12,60 +12,51 @@ interface PostCardProps {
 const PostCard = ({ post, featured = false }: PostCardProps) => {
   return (
     <article 
-      className={`group paper-note ${
-        featured 
-          ? "accent-purple lg:flex gap-8 items-center py-8" 
-          : "accent-blue hover:shadow-lg transition-all duration-300"
-      }`}
+      className={featured ? "featured-post-card" : "blog-card"}
     >
-      {post.coverImage && (
-        <Link
-          to={`/blog/${post.slug}`}
-          className={`block overflow-hidden ${featured ? "lg:w-1/2" : "mb-5"}`}
-        >
-          <img 
-            src={post.coverImage} 
-            alt={post.title}
-            className="w-full object-cover transition-transform duration-500 group-hover:scale-105 border-2 border-gray-200 rounded-md shadow-sm"
-            style={{ 
-              height: featured ? '320px' : '220px',
-              objectFit: 'cover'
-            }}
-          />
-        </Link>
-      )}
-      
-      <div className={`flex flex-col ${featured ? "lg:w-1/2" : ""}`}>
+      <div className={`${featured ? "" : "p-6"}`}>
         {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="flex flex-wrap gap-2 mb-4">
             {post.tags.slice(0, 3).map((tag) => (
-              <span 
-                key={tag} 
-                className="text-xs font-medium px-3 py-1 rounded-full border border-accent/30 bg-accent/5 text-accent shadow-sm"
-              >
+              <span key={tag} className="blog-tag">
                 {tag}
               </span>
             ))}
           </div>
         )}
         
+        {post.coverImage && (
+          <Link
+            to={`/blog/${post.slug}`}
+            className={`block overflow-hidden ${featured ? "mb-6" : "mb-4"}`}
+          >
+            <img 
+              src={post.coverImage} 
+              alt={post.title}
+              className={`w-full object-cover transition-transform duration-500 hover:scale-105 rounded-md ${
+                featured ? "h-[400px]" : "h-[220px]"
+              }`}
+            />
+          </Link>
+        )}
+        
         <Link to={`/blog/${post.slug}`}>
-          <h2 className={`${featured ? "text-2xl md:text-3xl" : "text-xl"} font-bold mb-3 group-hover:text-accent transition-colors`}>
+          <h2 className={`${featured ? "text-2xl md:text-3xl" : "text-xl"} font-serif font-semibold mb-3 hover:text-accent transition-colors`}>
             {post.title}
           </h2>
         </Link>
         
-        <time className="text-sm text-muted-foreground mb-3 italic">
+        <time className="text-sm text-muted-foreground mb-3 block">
           {formatDate(post.date)}
         </time>
         
         {blogConfig.showExcerptInList && (
-          <p className="text-muted-foreground line-clamp-3 mb-4 leading-relaxed">{post.excerpt}</p>
+          <p className="text-muted-foreground line-clamp-3 mb-5 leading-relaxed">{post.excerpt}</p>
         )}
         
         <Link
           to={`/blog/${post.slug}`}
-          className="mt-auto inline-flex items-center text-sm font-medium text-accent hover:underline"
+          className="inline-flex items-center text-sm font-medium text-accent hover:underline"
         >
           Read more
           <svg

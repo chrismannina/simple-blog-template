@@ -39,54 +39,40 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-6 md:px-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex justify-center mb-8">
-            <h1 className="title-badge">BREAKDOWN</h1>
-          </div>
-          <div className="paper-note accent-purple">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-primary">
+      <section className="pt-16 pb-12">
+        <div className="blog-container">
+          <div className="text-center mb-12">
+            <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4">
               {blogConfig.title}
-            </h2>
-            <p className="text-lg text-muted-foreground mb-4">
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               {blogConfig.description}
-            </p>
-            <p className="text-muted-foreground mb-4">
-              {blogConfig.author.bio}
             </p>
           </div>
         </div>
       </section>
 
       {/* Featured Post */}
-      <section className="py-12 px-6 md:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="paper-note accent-green pl-12 mb-6">
-            <h2 className="text-xl font-bold text-green-600">Title</h2>
-            <p className="text-sm text-muted-foreground">Include key search terms that readers will most likely search for</p>
+      {featuredPost && (
+        <section className="py-12 bg-secondary/30">
+          <div className="blog-container">
+            <h2 className="section-title">Featured Post</h2>
+            
+            {loading ? (
+              <div className="h-96 rounded-lg bg-white animate-pulse" />
+            ) : (
+              <PostCard post={featuredPost} featured />
+            )}
           </div>
-          
-          {loading ? (
-            <div className="h-96 rounded-lg bg-white animate-pulse" />
-          ) : featuredPost ? (
-            <PostCard post={featuredPost} featured />
-          ) : (
-            <p className="text-muted-foreground paper-note">No posts yet. Create your first post!</p>
-          )}
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Recent Posts */}
-      <section className="py-12 px-6 md:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="paper-note accent-blue pl-12 mb-6">
-            <h2 className="text-xl font-bold text-blue-600">Intro</h2>
-            <p className="text-sm text-muted-foreground">Quickly highlight the benefits and give some reasons why</p>
-          </div>
-          
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-xl font-bold">Recent Posts</h2>
-            {recentPosts.length > 0 && (
+      <section className="py-16">
+        <div className="blog-container">
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="section-title">Recent Articles</h2>
+            {recentPosts.length > blogConfig.postsPerPage && (
               <Link
                 to="/archive"
                 className="text-sm font-medium text-accent hover:underline flex items-center"
@@ -111,20 +97,57 @@ const Home = () => {
           </div>
 
           {loading ? (
-            <div className="space-y-8">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="h-40 rounded-lg bg-muted animate-pulse" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-80 rounded-lg bg-white animate-pulse" />
               ))}
             </div>
           ) : recentPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentPosts.map((post) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {recentPosts.slice(0, 4).map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
           ) : (
-            <p className="text-muted-foreground paper-note">No recent posts available.</p>
+            <p className="text-muted-foreground bg-white p-6 rounded-lg shadow-sm border border-border">
+              No recent posts available.
+            </p>
           )}
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-16 bg-secondary/30">
+        <div className="blog-container">
+          <div className="bg-white rounded-lg shadow-sm border border-border p-8">
+            <h2 className="section-title">About the Author</h2>
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              {blogConfig.author.avatar && (
+                <img 
+                  src={blogConfig.author.avatar} 
+                  alt={blogConfig.author.name}
+                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
+                />
+              )}
+              <div>
+                <h3 className="font-serif text-xl font-semibold mb-3">{blogConfig.author.name}</h3>
+                <p className="text-muted-foreground mb-4">{blogConfig.author.bio}</p>
+                <div className="flex gap-4">
+                  {Object.entries(blogConfig.author.social).map(([platform, url]) => (
+                    <a 
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline capitalize"
+                    >
+                      {platform}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </BlogLayout>

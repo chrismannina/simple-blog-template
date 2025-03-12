@@ -24,8 +24,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"SF Pro Display"', 'system-ui', 'sans-serif'],
-				serif: ['"New York"', 'Georgia', 'serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				serif: ['Playfair Display', 'Georgia', 'serif'],
 				mono: ['"SF Mono"', 'monospace'],
 			},
 			colors: {
@@ -126,6 +126,7 @@ export default {
 						},
 						'h1,h2,h3,h4': {
 							fontWeight: 'inherit',
+							fontFamily: 'Playfair Display, serif',
 						},
 					},
 				},
@@ -137,3 +138,4 @@ export default {
 		require("@tailwindcss/typography"),
 	],
 } satisfies Config;
+
