@@ -8,6 +8,14 @@ const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  // Use the configured accent color
+  const themeClass = `theme-${blogConfig.design.accentColor || 'indigo'}`;
+  
+  // Apply theme class to html element
+  useEffect(() => {
+    document.documentElement.className = themeClass;
+  }, [themeClass]);
 
   // Handle scroll event to add a background to navbar when scrolled
   useEffect(() => {
@@ -28,14 +36,14 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6 md:px-8",
-        scrolled ? "bg-white/80 backdrop-blur-lg shadow-sm" : "bg-transparent"
+        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-5xl mx-auto flex items-center justify-between">
         {/* Logo/Blog Title */}
         <Link
           to="/"
-          className="text-xl font-semibold tracking-tight hover:opacity-80 transition-opacity"
+          className="text-xl font-medium tracking-tight hover:text-accent transition-colors"
         >
           {blogConfig.title}
         </Link>
@@ -47,15 +55,15 @@ const Navbar = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-all hover:text-primary relative",
+                "text-sm font-medium transition-all hover:text-accent relative",
                 location.pathname === item.path
-                  ? "text-black"
+                  ? "text-accent"
                   : "text-muted-foreground"
               )}
             >
               {item.name}
               {location.pathname === item.path && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full transform origin-left animate-slide-up" />
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full transform origin-left animate-slide-up" />
               )}
             </Link>
           ))}
@@ -103,8 +111,8 @@ const Navbar = () => {
               className={cn(
                 "text-lg font-medium transition-colors",
                 location.pathname === item.path
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-primary"
+                  ? "text-accent"
+                  : "text-muted-foreground hover:text-accent"
               )}
             >
               {item.name}

@@ -8,11 +8,11 @@
 
 export const blogConfig = {
   // Basic information
-  title: "Minimal Blog",
-  description: "A beautifully designed, minimal blog template",
+  title: "Simple Blog",
+  description: "A clean, minimalist blog at simpleblog.md",
   author: {
     name: "John Doe",
-    bio: "Product designer and developer based in San Francisco. Writing about design, technology, and productivity.",
+    bio: "Writing about design, technology, and ideas that matter.",
     avatar: "/avatar.png", // Place your avatar image in the public folder
     social: {
       twitter: "https://twitter.com/yourusername",
@@ -22,7 +22,7 @@ export const blogConfig = {
   },
   
   // Site configuration
-  baseUrl: "https://yourblog.com",
+  baseUrl: "https://simpleblog.md",
   locale: "en-US",
   
   // Navigation
@@ -47,9 +47,14 @@ export const blogConfig = {
   showExcerptInList: true,
   excerptLength: 160,
   
+  // Design configuration
+  design: {
+    accentColor: "indigo", // Options: "indigo", "blue", "green", "amber"
+  },
+  
   // Footer
   footer: {
-    text: "© 2023 Minimal Blog. All rights reserved.",
+    text: "© 2023 Simple Blog. All rights reserved.",
     links: [
       { name: "Privacy", path: "/privacy" },
       { name: "Terms", path: "/terms" },

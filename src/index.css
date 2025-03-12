@@ -25,21 +25,21 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
     
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 221 83% 53%;
     
-    --radius: 0.5rem;
+    --radius: 0.3rem;
   }
   
   * {
-    @apply border-border selection:bg-black/5 selection:text-black;
+    @apply border-border selection:bg-accent/10 selection:text-accent;
   }
   
   html {
@@ -72,7 +72,7 @@
       prose-h2:text-2xl prose-h2:font-semibold
       prose-h3:text-xl 
       prose-pre:rounded-lg prose-pre:border prose-pre:border-zinc-200
-      prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+      prose-a:text-accent prose-a:no-underline hover:prose-a:underline
       prose-p:leading-relaxed prose-p:my-4
       prose-img:rounded-lg
       prose-pre:bg-zinc-50;
@@ -100,4 +100,29 @@
   opacity: 0;
   transform: translateY(-8px);
   transition: opacity 300ms, transform 300ms;
+}
+
+/* Theme variations */
+.theme-indigo {
+  --accent: 238 82% 60%;
+  --accent-foreground: 210 40% 98%;
+  --ring: 238 82% 60%;
+}
+
+.theme-blue {
+  --accent: 221 83% 53%;
+  --accent-foreground: 210 40% 98%;
+  --ring: 221 83% 53%;
+}
+
+.theme-green {
+  --accent: 142 71% 45%;
+  --accent-foreground: 210 40% 98%;
+  --ring: 142 71% 45%;
+}
+
+.theme-amber {
+  --accent: 43 96% 56%;
+  --accent-foreground: 0 0% 20%;
+  --ring: 43 96% 56%;
 }

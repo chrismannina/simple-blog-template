@@ -4,8 +4,8 @@ import { blogConfig } from "@/config/blog.config";
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 md:px-8 border-t border-border bg-secondary/30">
-      <div className="max-w-7xl mx-auto">
+    <footer className="py-12 px-6 md:px-8 border-t border-border">
+      <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Blog Info */}
           <div className="space-y-4">
@@ -23,7 +23,7 @@ const Footer = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -41,7 +41,7 @@ const Footer = () => {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors capitalize"
+                  className="text-sm text-muted-foreground hover:text-accent transition-colors capitalize"
                 >
                   {name}
                 </a>
