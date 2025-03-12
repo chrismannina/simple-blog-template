@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -53,6 +53,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    background-image: linear-gradient(to right, rgba(243, 244, 246, 0.4) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(243, 244, 246, 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
@@ -67,7 +70,7 @@
       prose-h1:text-3xl prose-h1:mb-6
       prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
       prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-      prose-p:leading-relaxed prose-p:my-6
+      prose-p:leading-relaxed prose-p:my-6 prose-p:text-[17px]
       prose-pre:rounded-md prose-pre:border-border
       prose-a:text-accent prose-a:font-medium prose-a:no-underline hover:prose-a:underline
       prose-img:rounded-lg prose-img:my-10 prose-img:mx-auto prose-img:shadow-sm
@@ -75,7 +78,23 @@
   }
   
   .blog-card {
-    @apply bg-white rounded-lg shadow-sm border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
+    @apply bg-white rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
+    position: relative;
+  }
+  
+  .blog-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 1.5rem 1.5rem 0;
+    border-color: transparent #f8f9fa transparent transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .blog-card:hover::after {
+    border-color: transparent var(--accent-color, hsl(243, 75%, 59%, 0.2)) transparent transparent;
   }
   
   .blog-tag {
@@ -92,7 +111,19 @@
   }
   
   .featured-post-card {
-    @apply bg-gradient-to-br from-white to-secondary/20 border border-border rounded-lg shadow-md p-6 md:p-8;
+    @apply bg-white border border-border rounded-lg shadow-[0_4px_14px_rgba(0,0,0,0.08)] p-6 md:p-8;
+    position: relative;
+  }
+  
+  .featured-post-card::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: hsl(var(--accent));
+    border-radius: 50%;
   }
 }
 
@@ -124,23 +155,75 @@
   --accent: 243 75% 59%;
   --accent-foreground: 210 40% 98%;
   --ring: 243 75% 59%;
+  --accent-color: hsla(243, 75%, 59%, 0.2);
 }
 
 .theme-blue {
   --accent: 221 83% 53%;
   --accent-foreground: 210 40% 98%;
   --ring: 221 83% 53%;
+  --accent-color: hsla(221, 83%, 53%, 0.2);
 }
 
 .theme-green {
   --accent: 142 71% 45%;
   --accent-foreground: 210 40% 98%;
   --ring: 142 71% 45%;
+  --accent-color: hsla(142, 71%, 45%, 0.2);
 }
 
 .theme-amber {
   --accent: 43 96% 56%;
   --accent-foreground: 0 0% 20%;
   --ring: 43 96% 56%;
+  --accent-color: hsla(43, 96%, 56%, 0.2);
 }
 
+/* Hero Section Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fadeInUp-delay-1 {
+  animation: fadeInUp 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fadeInUp-delay-2 {
+  animation: fadeInUp 0.6s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Content reveal animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reading progress bar */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: hsl(var(--accent));
+  z-index: 9999;
+  transition: width 0.1s ease;
+}

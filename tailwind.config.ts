@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -27,6 +26,7 @@ export default {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				serif: ['Playfair Display', 'Georgia', 'serif'],
 				mono: ['"SF Mono"', 'monospace'],
+				merriweather: ['Merriweather', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -93,6 +93,14 @@ export default {
 					from: { transform: 'translateY(-10px)', opacity: '0' },
 					to: { transform: 'translateY(0)', opacity: '1' }
 				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' },
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -101,6 +109,8 @@ export default {
 				'fade-out': 'fade-out 0.3s ease-out',
 				'slide-up': 'slide-up 0.4s ease-out',
 				'slide-down': 'slide-down 0.4s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 			},
 			typography: {
 				DEFAULT: {
@@ -131,6 +141,10 @@ export default {
 					},
 				},
 			},
+			boxShadow: {
+				'paper': '0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.08)',
+				'paper-hover': '0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05)',
+			},
 		}
 	},
 	plugins: [
@@ -138,4 +152,3 @@ export default {
 		require("@tailwindcss/typography"),
 	],
 } satisfies Config;
-

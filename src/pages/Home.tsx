@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { getAllPosts } from "@/lib/posts";
@@ -12,6 +12,7 @@ import { PostMeta } from "@/lib/posts";
 const Home = () => {
   const [posts, setPosts] = useState<PostMeta[]>([]);
   const [loading, setLoading] = useState(true);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -39,13 +40,13 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-16 pb-12">
+      <section className="pt-16 pb-12" ref={heroRef}>
         <div className="blog-container">
           <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4 animate-fadeInUp">
               {blogConfig.title}
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto animate-fadeInUp-delay-1">
               {blogConfig.description}
             </p>
           </div>
@@ -54,7 +55,7 @@ const Home = () => {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-12 bg-secondary/30">
+        <section className="py-12 bg-secondary/30 reveal-on-scroll">
           <div className="blog-container">
             <h2 className="section-title">Featured Post</h2>
             
@@ -70,16 +71,16 @@ const Home = () => {
       {/* Recent Posts */}
       <section className="py-16">
         <div className="blog-container">
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex justify-between items-center mb-10 reveal-on-scroll">
             <h2 className="section-title">Recent Articles</h2>
             {recentPosts.length > blogConfig.postsPerPage && (
               <Link
                 to="/archive"
-                className="text-sm font-medium text-accent hover:underline flex items-center"
+                className="text-sm font-medium text-accent hover:underline flex items-center group"
               >
                 View all posts
                 <svg
-                  className="ml-1 w-4 h-4"
+                  className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -104,8 +105,8 @@ const Home = () => {
             </div>
           ) : recentPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {recentPosts.slice(0, 4).map((post) => (
-                <PostCard key={post.slug} post={post} />
+              {recentPosts.slice(0, 4).map((post, index) => (
+                <PostCard key={post.slug} post={post} delay={index} />
               ))}
             </div>
           ) : (
@@ -119,7 +120,7 @@ const Home = () => {
       {/* About Section */}
       <section className="py-16 bg-secondary/30">
         <div className="blog-container">
-          <div className="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div className="bg-white rounded-lg shadow-[0_4px_14px_rgba(0,0,0,0.08)] border border-border p-8 reveal-on-scroll">
             <h2 className="section-title">About the Author</h2>
             <div className="flex flex-col md:flex-row gap-8 items-center">
               {blogConfig.author.avatar && (
@@ -139,9 +140,10 @@ const Home = () => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent hover:underline capitalize"
+                      className="text-accent hover:underline capitalize group"
                     >
                       {platform}
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-accent"></span>
                     </a>
                   ))}
                 </div>

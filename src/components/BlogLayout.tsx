@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { blogConfig } from "@/config/blog.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,6 +11,28 @@ interface BlogLayoutProps {
 }
 
 const BlogLayout = ({ children, className }: BlogLayoutProps) => {
+  // Add scroll reveal effect
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    
+    const revealOnScroll = () => {
+      for (let i = 0; i < revealElements.length; i++) {
+        const element = revealElements[i];
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('revealed');
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', revealOnScroll);
+  }, []);
+
   return (
     <div className={`min-h-screen flex flex-col ${`theme-${blogConfig.design.accentColor || 'indigo'}`}`}>
       <Navbar />

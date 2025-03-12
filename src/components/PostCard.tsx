@@ -7,18 +7,20 @@ import { formatDate } from "@/lib/utils";
 interface PostCardProps {
   post: PostMeta;
   featured?: boolean;
+  delay?: number;
 }
 
-const PostCard = ({ post, featured = false }: PostCardProps) => {
+const PostCard = ({ post, featured = false, delay = 0 }: PostCardProps) => {
   return (
     <article 
-      className={featured ? "featured-post-card" : "blog-card"}
+      className={`reveal-on-scroll ${featured ? "featured-post-card" : "blog-card"}`}
+      style={{ transitionDelay: `${delay * 100}ms` }}
     >
       <div className={`${featured ? "" : "p-6"}`}>
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="blog-tag">
+            {post.tags.slice(0, 3).map((tag, index) => (
+              <span key={tag} className="blog-tag" style={{ transitionDelay: `${index * 50}ms` }}>
                 {tag}
               </span>
             ))}
@@ -56,11 +58,11 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
         
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center text-sm font-medium text-accent hover:underline"
+          className="inline-flex items-center text-sm font-medium text-accent hover:underline group"
         >
           Read more
           <svg
-            className="ml-1.5 w-4 h-4 transition-transform group-hover:translate-x-1"
+            className="ml-1.5 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
