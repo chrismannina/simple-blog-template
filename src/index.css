@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=EB+Garamond:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,35 +6,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 36 33% 97%;
+    --foreground: 20 14% 15%;
     
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 36 100% 99%;
+    --card-foreground: 20 14% 15%;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 36 33% 97%;
+    --popover-foreground: 20 14% 15%;
     
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 20 14% 15%;
+    --primary-foreground: 60 9% 98%;
     
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11.2%;
+    --secondary: 60 9% 98%;
+    --secondary-foreground: 20 14% 15%;
     
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 36 15% 92%;
+    --muted-foreground: 20 6% 40%;
     
-    --accent: 243 75% 59%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 24 90% 55%;
+    --accent-foreground: 60 9% 98%;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 9% 98%;
     
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 84% 4.9%;
+    --border: 20 6% 85%;
+    --input: 20 6% 85%;
+    --ring: 24 90% 55%;
     
-    --radius: 0.5rem;
+    --radius: 0.125rem;
   }
   
   * {
@@ -52,10 +51,9 @@
   
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
-    background-image: linear-gradient(to right, rgba(243, 244, 246, 0.4) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(243, 244, 246, 0.4) 1px, transparent 1px);
-    background-size: 40px 40px;
+    font-family: 'EB Garamond', serif;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='%23f5f1e7'/%3E%3Cpath d='M95 95V5H5v90h90z' stroke='%23e9e2d0' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
   }
 }
 
@@ -66,64 +64,86 @@
   
   .prose-custom {
     @apply prose prose-slate max-w-none
-      prose-headings:font-serif prose-headings:font-medium
-      prose-h1:text-3xl prose-h1:mb-6
-      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-      prose-p:leading-relaxed prose-p:my-6 prose-p:text-[17px]
-      prose-pre:rounded-md prose-pre:border-border
+      prose-headings:font-serif prose-headings:font-normal
+      prose-h1:text-3xl prose-h1:mb-6 prose-h1:uppercase prose-h1:tracking-wide
+      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-border prose-h2:pb-2
+      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:font-medium
+      prose-p:leading-relaxed prose-p:my-6 prose-p:text-[18px] prose-p:font-garamond
+      prose-pre:rounded-sm prose-pre:border-border
       prose-a:text-accent prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-      prose-img:rounded-lg prose-img:my-10 prose-img:mx-auto prose-img:shadow-sm
-      prose-blockquote:border-l-accent/50 prose-blockquote:bg-accent/5 prose-blockquote:rounded-r-md prose-blockquote:pl-6 prose-blockquote:py-2;
+      prose-img:rounded-sm prose-img:my-10 prose-img:mx-auto prose-img:border prose-img:border-border prose-img:shadow-sm
+      prose-blockquote:border-l-accent/50 prose-blockquote:bg-muted prose-blockquote:rounded-r-sm prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:italic;
   }
   
   .blog-card {
-    @apply bg-white rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
+    @apply bg-card rounded-sm border border-border overflow-hidden transition-all duration-300 hover:shadow-md;
     position: relative;
   }
   
-  .blog-card::after {
+  .blog-card::before {
     content: "";
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    border-style: solid;
-    border-width: 0 1.5rem 1.5rem 0;
-    border-color: transparent #f8f9fa transparent transparent;
-    transition: all 0.3s ease;
-  }
-  
-  .blog-card:hover::after {
-    border-color: transparent var(--accent-color, hsl(243, 75%, 59%, 0.2)) transparent transparent;
+    height: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
   }
   
   .blog-tag {
-    @apply text-xs font-medium px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-accent;
+    @apply text-xs font-medium uppercase tracking-wider px-3 py-1 rounded-sm bg-muted text-muted-foreground border border-border;
   }
   
   .section-title {
-    @apply font-serif text-2xl md:text-3xl font-semibold text-primary mb-6 relative inline-block;
+    @apply font-serif text-2xl md:text-3xl font-semibold uppercase tracking-wide text-primary mb-6 relative inline-block;
+  }
+  
+  .section-title::before {
+    content: "";
+    @apply absolute -bottom-2 left-0 h-0.5 w-1/3 bg-accent;
   }
   
   .section-title::after {
     content: "";
-    @apply absolute -bottom-2 left-0 h-1 w-1/3 bg-accent rounded-full;
+    @apply absolute -bottom-2 left-0 right-0 h-px bg-border;
   }
   
   .featured-post-card {
-    @apply bg-white border border-border rounded-lg shadow-[0_4px_14px_rgba(0,0,0,0.08)] p-6 md:p-8;
+    @apply bg-card border border-border rounded-sm p-6 md:p-8;
     position: relative;
   }
   
   .featured-post-card::before {
     content: "";
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.25rem;
     background-color: hsl(var(--accent));
-    border-radius: 50%;
+  }
+  
+  /* Newspaper column styles */
+  .newspaper-columns-2 {
+    @apply md:columns-2 md:gap-8;
+  }
+  
+  .newspaper-columns-3 {
+    @apply lg:columns-3 lg:gap-8;
+  }
+  
+  .newspaper-divider {
+    @apply border-l border-dashed border-border h-full mx-4 my-0 opacity-70;
+  }
+  
+  /* Newspaper typography */
+  .newspaper-heading {
+    @apply font-serif uppercase tracking-wide text-center border-b-2 border-t-2 border-primary py-2 mb-6;
+  }
+  
+  .newspaper-dropcap:first-letter {
+    @apply font-serif text-5xl font-bold float-left mr-2 mt-1;
+    line-height: 0.8;
   }
 }
 
@@ -152,31 +172,31 @@
 
 /* Theme variations */
 .theme-indigo {
-  --accent: 243 75% 59%;
-  --accent-foreground: 210 40% 98%;
-  --ring: 243 75% 59%;
-  --accent-color: hsla(243, 75%, 59%, 0.2);
+  --accent: 24 90% 55%;
+  --accent-foreground: 60 9% 98%;
+  --ring: 24 90% 55%;
+  --accent-color: hsla(24, 90%, 55%, 0.2);
 }
 
 .theme-blue {
-  --accent: 221 83% 53%;
-  --accent-foreground: 210 40% 98%;
-  --ring: 221 83% 53%;
-  --accent-color: hsla(221, 83%, 53%, 0.2);
+  --accent: 220 76% 40%;
+  --accent-foreground: 60 9% 98%;
+  --ring: 220 76% 40%;
+  --accent-color: hsla(220, 76%, 40%, 0.2);
 }
 
 .theme-green {
-  --accent: 142 71% 45%;
-  --accent-foreground: 210 40% 98%;
-  --ring: 142 71% 45%;
-  --accent-color: hsla(142, 71%, 45%, 0.2);
+  --accent: 142 58% 35%;
+  --accent-foreground: 60 9% 98%;
+  --ring: 142 58% 35%;
+  --accent-color: hsla(142, 58%, 35%, 0.2);
 }
 
 .theme-amber {
-  --accent: 43 96% 56%;
+  --accent: 43 80% 45%;
   --accent-foreground: 0 0% 20%;
-  --ring: 43 96% 56%;
-  --accent-color: hsla(43, 96%, 56%, 0.2);
+  --ring: 43 80% 45%;
+  --accent-color: hsla(43, 80%, 45%, 0.2);
 }
 
 /* Hero Section Animations */
@@ -226,4 +246,40 @@
   background-color: hsl(var(--accent));
   z-index: 9999;
   transition: width 0.1s ease;
+}
+
+/* Newspaper-specific decorative elements */
+.newspaper-border {
+  @apply border border-border rounded-sm p-4 bg-card relative;
+}
+
+.newspaper-border::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+}
+
+.newspaper-date {
+  @apply text-xs uppercase tracking-wider text-muted-foreground border-b border-border pb-1 mb-4;
+}
+
+.newspaper-image {
+  @apply border border-border p-1 bg-white shadow-sm;
+}
+
+.newspaper-box {
+  @apply border border-border bg-muted p-4 text-sm;
+}
+
+.newspaper-headline {
+  @apply font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight;
+}
+
+.newspaper-subheading {
+  @apply font-serif text-xl tracking-wide text-muted-foreground italic;
 }

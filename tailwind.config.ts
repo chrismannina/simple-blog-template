@@ -27,6 +27,7 @@ export default {
 				serif: ['Playfair Display', 'Georgia', 'serif'],
 				mono: ['"SF Mono"', 'monospace'],
 				merriweather: ['Merriweather', 'serif'],
+				garamond: ['EB Garamond', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -100,6 +101,16 @@ export default {
 				'pulse-slow': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.8' },
+				},
+				'folded-corner': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(-4px)' },
+				},
+				'typewriter': {
+					to: { left: '100%' }
+				},
+				'blink': {
+					'50%': { opacity: '0' }
 				}
 			},
 			animation: {
@@ -111,6 +122,9 @@ export default {
 				'slide-down': 'slide-down 0.4s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+				'folded-corner': 'folded-corner 0.3s ease-out',
+				'typewriter': 'typewriter 4s steps(40) forwards',
+				'blink': 'blink 0.7s infinite'
 			},
 			typography: {
 				DEFAULT: {
@@ -138,12 +152,27 @@ export default {
 							fontWeight: 'inherit',
 							fontFamily: 'Playfair Display, serif',
 						},
+						h1: {
+							textTransform: 'uppercase',
+							letterSpacing: '0.05em',
+							borderBottom: '2px solid var(--border)',
+							paddingBottom: '0.5rem',
+						},
+						h2: {
+							borderBottom: '1px solid var(--border)',
+							paddingBottom: '0.25rem',
+						},
+						p: {
+							fontFamily: 'EB Garamond, serif',
+							fontSize: '1.125rem',
+						}
 					},
 				},
 			},
 			boxShadow: {
-				'paper': '0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.08)',
-				'paper-hover': '0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05)',
+				'paper': '0 1px 3px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.08)',
+				'paper-hover': '0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05)',
+				'newspaper': '2px 2px 0px rgba(0,0,0,0.1)',
 			},
 		}
 	},
