@@ -40,15 +40,27 @@ export async function getAllPosts(): Promise<PostMeta[]> {
 
   // Parse frontmatter from each post
   const posts = mockPosts.map(({ slug, content }) => {
-    const { data } = matter(content);
-    return {
-      slug,
-      title: data.title || "Untitled Post",
-      date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-      excerpt: data.excerpt || "",
-      tags: data.tags || [],
-      coverImage: data.coverImage || "",
-    };
+    try {
+      const { data } = matter(content);
+      return {
+        slug,
+        title: data.title || "Untitled Post",
+        date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+        excerpt: data.excerpt || "",
+        tags: data.tags || [],
+        coverImage: data.coverImage || "",
+      };
+    } catch (error) {
+      console.error(`Error parsing frontmatter for ${slug}:`, error);
+      return {
+        slug,
+        title: "Untitled Post",
+        date: new Date().toISOString(),
+        excerpt: "",
+        tags: [],
+        coverImage: "",
+      };
+    }
   });
 
   // Sort posts by date (newest first)
@@ -77,18 +89,21 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
       throw new Error(`Post not found: ${slug}`);
     }
     
-    const { data, content } = matter(postContent);
+    // Parse the frontmatter and content
+    const parsed = matter(postContent);
     
+    // Ensure we're properly extracting the data from frontmatter
     return {
       meta: {
         slug,
-        title: data.title || "Untitled Post",
-        date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-        excerpt: data.excerpt || "",
-        tags: data.tags || [],
-        coverImage: data.coverImage || "",
+        title: parsed.data.title || "Untitled Post",
+        date: parsed.data.date ? new Date(parsed.data.date).toISOString() : new Date().toISOString(),
+        excerpt: parsed.data.excerpt || "",
+        tags: parsed.data.tags || [],
+        coverImage: parsed.data.coverImage || "",
       },
-      content,
+      // Only return the actual content, not the frontmatter
+      content: parsed.content,
     };
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);
