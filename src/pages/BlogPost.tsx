@@ -144,7 +144,7 @@ const BlogPost = () => {
             </div>
           )}
 
-          {/* Content */}
+          {/* Content - render only the content part, not the frontmatter */}
           <MarkdownRenderer content={post.content} />
         </article>
       </div>
