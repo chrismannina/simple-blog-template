@@ -10,8 +10,11 @@ interface MarkdownRendererProps {
 }
 
 const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
-  // Ensure we're only rendering the actual content, not the frontmatter
-  const contentToRender = content || "";
+  // Remove any leading or trailing whitespace
+  const contentToRender = content?.trim() || "";
+  
+  // If the markdown starts with a heading that looks like a title, we might want to remove it
+  // since it's already displayed in the article header
   
   return (
     <ReactMarkdown

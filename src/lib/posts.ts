@@ -108,6 +108,7 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
         coverImage: String(data.coverImage || ""),
       },
       // Return only the content part without any frontmatter
+      // Remove any duplicate h1 title that might be in the content if it matches the meta title
       content: content.trim(),
     };
   } catch (error) {
