@@ -93,21 +93,18 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
     }
     
     // Parse the frontmatter and content using gray-matter
-    const parsed = matter(postContent);
-    
-    // Debug output to verify the parsing
-    console.log("Parsed frontmatter:", parsed.data);
+    const { data, content } = matter(postContent);
     
     return {
       meta: {
         slug,
-        title: String(parsed.data.title) || "Untitled Post",
-        date: parsed.data.date ? new Date(parsed.data.date).toISOString() : new Date().toISOString(),
-        excerpt: String(parsed.data.excerpt || ""),
-        tags: Array.isArray(parsed.data.tags) ? parsed.data.tags : [],
-        coverImage: String(parsed.data.coverImage || ""),
+        title: String(data.title || "Untitled Post"),
+        date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+        excerpt: String(data.excerpt || ""),
+        tags: Array.isArray(data.tags) ? data.tags : [],
+        coverImage: String(data.coverImage || ""),
       },
-      content: parsed.content,
+      content: content,
     };
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);

@@ -9,11 +9,20 @@ export function cn(...inputs: ClassValue[]) {
 
 // Format date using the blogConfig date format settings
 export function formatDate(dateString: string): string {
-  const date = new Date(dateString)
-  return date.toLocaleDateString(
-    blogConfig.dateFormat.locale,
-    blogConfig.dateFormat.options as Intl.DateTimeFormatOptions
-  )
+  try {
+    const date = new Date(dateString)
+    if (isNaN(date.getTime())) {
+      console.error('Invalid date:', dateString)
+      return 'Invalid date'
+    }
+    return date.toLocaleDateString(
+      blogConfig.dateFormat.locale,
+      blogConfig.dateFormat.options as Intl.DateTimeFormatOptions
+    )
+  } catch (error) {
+    console.error('Error formatting date:', error)
+    return 'Date error'
+  }
 }
 
 // Helper to create a title with the blog name
