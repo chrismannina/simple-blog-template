@@ -95,8 +95,9 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
     // Parse the frontmatter and content using gray-matter
     const { data, content } = matter(postContent);
     
-    // Make sure we're properly extracting the metadata and returning just the content
-    // without the frontmatter included
+    // Extract the actual content without any frontmatter
+    // The content returned by gray-matter should already have frontmatter removed,
+    // but let's ensure we're not including any part of the frontmatter in the content
     return {
       meta: {
         slug,
@@ -106,8 +107,8 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
         tags: Array.isArray(data.tags) ? data.tags : [],
         coverImage: String(data.coverImage || ""),
       },
-      // Return only the markdown content without the frontmatter
-      content,
+      // Return only the content part without any frontmatter
+      content: content.trim(),
     };
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);
