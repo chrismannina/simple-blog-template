@@ -9,15 +9,15 @@
 export const blogConfig = {
   // Basic information
   title: "Simple Blog",
-  description: "A clean, minimalist blog at simpleblog.md",
+  description: "A clean, minimalist blog.",
   author: {
-    name: "John Doe",
-    bio: "Writing about design, technology, and ideas that matter.",
+    name: "Chris Mannina",
+    bio: "Creator of Simple Blog. Writing about design, technology, and ideas that matter.",
     avatar: "/avatar.png", // Place your avatar image in the public folder
     social: {
-      twitter: "https://twitter.com/yourusername",
-      github: "https://github.com/yourusername",
-      linkedin: "https://linkedin.com/in/yourusername",
+      twitter: "https://twitter.com/chrismannina",
+      github: "https://github.com/chrismannina",
+      linkedin: "https://linkedin.com/in/chrismannina",
     },
   },
   
@@ -49,12 +49,12 @@ export const blogConfig = {
   
   // Design configuration
   design: {
-    accentColor: "indigo", // Options: "indigo", "blue", "green", "amber"
+    accentColor: "blue", // Options: "indigo", "blue", "green", "amber"
   },
   
   // Footer
   footer: {
-    text: "© 2023 Simple Blog. All rights reserved.",
+    text: "© 2025 Simple Blog. All rights reserved.",
     links: [
       { name: "Privacy", path: "/privacy" },
       { name: "Terms", path: "/terms" },
