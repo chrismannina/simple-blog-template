@@ -1,17 +1,38 @@
 # Simple Blog Template
 
-A clean, minimalist blog template built with React, Vite, and Markdown for content. This template allows you to simply add markdown files to the `posts` directory and have them automatically displayed as blog entries.
+A clean, minimalist blog template built with React, Vite, and Markdown for content. This template prioritizes simplicity and readability, allowing you to focus on writing rather than configuration.
+
+![Simple Blog Screenshot](./public/blog-screenshot.png)
+
+## ✨ Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/simple-blog-template.git my-blog
+
+# Navigate to the project
+cd my-blog
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+Visit http://localhost:5173 in your browser to see your blog.
 
 ## Features
 
 - 📝 Write blog posts in Markdown
-- 🎨 Clean, responsive design
+- 🎨 Clean, minimalist design
 - 🚀 Fast loading with Vite
 - 🏷️ Tag support
 - 📱 Mobile-friendly
 - 🖼️ Cover image support
 - 🔍 SEO-friendly
 - 🌙 Dark mode toggle with system preference detection
+- 🧩 Easily customizable through a single config file
 
 ## Getting Started
 
@@ -126,6 +147,46 @@ pnpm build
 ```
 
 The built files will be in the `dist` directory, which you can deploy to any static hosting service.
+
+## Deployment Options
+
+Deploy your blog to your favorite hosting platform:
+
+### Vercel
+
+```bash
+npm install -g vercel
+vercel
+```
+
+### Netlify
+
+```bash
+npm install -g netlify-cli
+netlify deploy
+```
+
+### GitHub Pages
+
+Add this to your `vite.config.ts`:
+
+```typescript
+export default defineConfig({
+  base: '/your-repo-name/', // Replace with your repository name
+  // other config...
+})
+```
+
+Then run:
+
+```bash
+npm run build
+npm run deploy
+```
+
+## Documentation
+
+For more detailed usage instructions, see [USAGE.md](./USAGE.md).
 
 ## License
 

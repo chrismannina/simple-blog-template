@@ -1,0 +1,18 @@
+# Blog Screenshot Instructions
+
+For a more professional looking repository, add a screenshot of your blog to the README.
+
+## How to add a screenshot
+
+1. Take a screenshot of your blog's homepage when it's running
+2. Save the screenshot as `blog-screenshot.png` in the `public` directory
+3. The image will automatically be displayed in the README
+
+## Recommended screenshot dimensions
+
+- Width: 1200-1400px
+- Height: 600-800px
+
+This will ensure your screenshot looks good on GitHub without being too large.
+
+Note: If you don't add a screenshot, the placeholder image will be shown instead. 
