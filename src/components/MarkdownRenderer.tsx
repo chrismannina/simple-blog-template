@@ -1,4 +1,3 @@
-
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -13,8 +12,9 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
   // Remove any leading or trailing whitespace
   const contentToRender = content?.trim() || "";
   
-  // If the markdown starts with a heading that looks like a title, we might want to remove it
-  // since it's already displayed in the article header
+  // Check if the content still has any frontmatter (it shouldn't)
+  // This is a safety check in case the grey-matter didn't remove it
+  const cleanedContent = contentToRender.replace(/^---\s*[\s\S]*?---\s*/m, '');
   
   return (
     <ReactMarkdown
@@ -114,10 +114,10 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
               {children}
             </h1>
           );
-        },
+        }
       }}
     >
-      {contentToRender}
+      {cleanedContent}
     </ReactMarkdown>
   );
 };

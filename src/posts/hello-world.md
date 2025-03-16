@@ -1,9 +1,9 @@
-
 ---
 title: Hello, World! Welcome to Your New Blog
 date: 2023-07-15
 excerpt: Get started with your new blog template and learn how to customize it to make it your own.
 tags: ['getting-started', 'tutorial']
+coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
 ---
 
 # Hello, World! Welcome to Your New Blog
@@ -14,7 +14,7 @@ This is your first blog post. Edit or delete it, then start writing!
 
 To add a new blog post, simply create a new markdown file in the `src/posts` directory. The file should have a `.md` extension and include front matter at the top of the file.
 
-Front matter is a YAML block that contains metadata about your post. For example:
+Front matter is a YAML block that contains metadata about your post. It must be placed at the very top of the file between triple-dash lines (`---`). For example:
 
 ```yaml
 ---
@@ -22,8 +22,21 @@ title: Hello, World! Welcome to Your New Blog
 date: 2023-07-15
 excerpt: Get started with your new blog template and learn how to customize it to make it your own.
 tags: ['getting-started', 'tutorial']
+coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 ```
+
+**Important**: The frontmatter must be at the very top of the file with no blank lines before it. After the frontmatter, you can include an H1 title that matches your frontmatter title - it will be automatically removed from the content since the title is displayed separately in the blog layout.
+
+## Available Frontmatter Fields
+
+You can use these fields in your frontmatter:
+
+- `title` (required): The title of your blog post
+- `date` (required): The publication date (YYYY-MM-DD format)
+- `excerpt` (recommended): A short summary shown in the post list
+- `tags` (optional): An array of tags
+- `coverImage` (optional): URL to your cover image
 
 ## Customizing Your Blog
 

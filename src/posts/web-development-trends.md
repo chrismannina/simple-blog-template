@@ -1,4 +1,3 @@
-
 ---
 title: Top Web Development Trends to Watch in 2023
 date: 2023-07-30

@@ -1,4 +1,3 @@
-
 ---
 title: Markdown Formatting Guide
 date: 2023-07-16

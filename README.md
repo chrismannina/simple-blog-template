@@ -1,211 +1,114 @@
-# Simple Blog - A Minimalist Markdown Blog
+# Simple Blog Template
 
-![Simple Blog](public/og-image.png)
+A clean, minimalist blog template built with React, Vite, and Markdown for content. This template allows you to simply add markdown files to the `posts` directory and have them automatically displayed as blog entries.
 
-A clean, minimalist blog built with React, TypeScript, and Tailwind CSS. This project makes it easy to create and manage a personal blog with markdown content.
+## Features
 
-## 📚 Features
+- 📝 Write blog posts in Markdown
+- 🎨 Clean, responsive design
+- 🚀 Fast loading with Vite
+- 🏷️ Tag support
+- 📱 Mobile-friendly
+- 🖼️ Cover image support
+- 🔍 SEO-friendly
+- 🌙 Dark mode (optional)
 
-- **Markdown Support** - Write your blog posts in Markdown with support for all common Markdown features
-- **Syntax Highlighting** - Code blocks are automatically highlighted
-- **Responsive Design** - Looks great on desktop, tablet, and mobile devices
-- **Customizable Theme** - Easily change the accent color and other design elements
-- **SEO Friendly** - Built with SEO best practices in mind
-- **Fast Performance** - Built with performance in mind
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
+## Getting Started
 
 ### Installation
 
-1. Clone the repository:
-```sh
-git clone https://github.com/yourusername/simple-blog.git
-cd simple-blog
-```
+1. Clone this repository
+2. Install dependencies
 
-2. Install dependencies:
-```sh
+```bash
 npm install
 # or
-yarn
+yarn install
+# or
+pnpm install
 ```
 
-3. Start the development server:
-```sh
+3. Start the development server
+
+```bash
 npm run dev
 # or
 yarn dev
+# or
+pnpm dev
 ```
 
-4. Open your browser and visit `http://localhost:8080`
+4. Open http://localhost:5173 in your browser to see the blog
 
-## 📝 Creating Blog Posts
+## Adding Blog Posts
 
-Blog posts are written in Markdown format and stored in the `src/posts` directory. Each post should have a `.md` extension and include frontmatter at the top of the file.
+To add a new blog post, simply create a markdown file in the `src/posts` directory. The filename will be used as the URL slug.
 
 ### Frontmatter
 
-Frontmatter is used to define metadata for your blog posts. It's written at the top of your markdown file between triple-dashed lines.
+Each blog post must include frontmatter at the very top of the file. Frontmatter is YAML metadata surrounded by triple-dash lines (`---`).
 
-Example:
+**Example:**
 
-```md
+```markdown
 ---
-title: Hello World
-date: 2023-06-15
-excerpt: This is my first blog post
-tags: ["hello", "introduction"]
-coverImage: "/images/hello-world.jpg"
+title: My Awesome Blog Post
+date: 2023-08-15
+excerpt: This is a short summary of my blog post that will appear in the blog listing.
+tags: ['react', 'javascript', 'tutorial']
+coverImage: https://example.com/path/to/image.jpg
 ---
 
-# Hello World
+# My Awesome Blog Post
 
-This is my first blog post...
+Your content goes here...
 ```
 
-### Available Frontmatter Fields
+### Required Fields
 
-| Field | Description | Required |
-|-------|-------------|----------|
-| `title` | The title of your post | Yes |
-| `date` | Publication date (YYYY-MM-DD) | Yes |
-| `excerpt` | A short summary of your post | Yes |
-| `tags` | An array of tags | No |
-| `coverImage` | URL to the cover image | No |
+- `title`: The title of your blog post
+- `date`: The publication date (YYYY-MM-DD format)
 
-### Markdown Features
+### Recommended Fields
 
-The blog supports standard Markdown features plus GitHub Flavored Markdown (GFM) through `remark-gfm`, including:
+- `excerpt`: A short summary shown in the post list
+- `tags`: An array of tags
+- `coverImage`: URL to your cover image
 
-- Headers
-- Lists (ordered and unordered)
-- Links
-- Images
-- Code blocks with syntax highlighting
-- Tables
-- Blockquotes
-- And more!
+### Important Notes About Frontmatter
 
-## 🎨 Customization
+1. The frontmatter **must** be at the very top of the file with no blank lines before it
+2. You can include an H1 title after the frontmatter that matches your frontmatter title - it will be automatically removed from the content since the title is displayed separately in the blog layout
+3. All frontmatter fields are parsed using the `gray-matter` library
 
-### Blog Configuration
+## Customizing Your Blog
 
-You can easily customize the blog by editing the configuration file at `src/config/blog.config.ts`. This file contains settings for:
+You can customize your blog by editing the `src/config/blog.config.ts` file. This file contains configuration options such as:
 
 - Blog title and description
 - Author information
 - Navigation links
 - Date formatting
-- Theme colors
 - And more!
 
-Example configuration:
+## Building for Production
 
-```typescript
-export const blogConfig = {
-  title: "Simple Blog",
-  description: "A clean, minimalist blog at simpleblog.md",
-  author: {
-    name: "John Doe",
-    bio: "Writing about design, technology, and ideas that matter.",
-    avatar: "/avatar.png",
-    social: {
-      twitter: "https://twitter.com/yourusername",
-      github: "https://github.com/yourusername",
-      linkedin: "https://linkedin.com/in/yourusername",
-    },
-  },
-  // ... other configuration options
-};
+To build your blog for production, run:
+
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
 ```
 
-### Styling
+The built files will be in the `dist` directory, which you can deploy to any static hosting service.
 
-The blog uses Tailwind CSS for styling. You can customize the styles by:
+## License
 
-1. Editing the `tailwind.config.ts` file to change the theme
-2. Modifying the CSS classes in the components
-3. Adding your own styles to the `src/index.css` file
+MIT
 
-## 🧩 Project Structure
+---
 
-```
-simple-blog/
-├── public/              # Static assets
-├── src/
-│   ├── components/      # React components
-│   ├── config/          # Configuration files
-│   ├── hooks/           # Custom React hooks
-│   ├── lib/             # Utility functions
-│   ├── pages/           # Page components
-│   ├── posts/           # Markdown blog posts
-│   ├── App.tsx          # Main application component
-│   ├── index.css        # Global styles
-│   └── main.tsx         # Application entry point
-├── .gitignore
-├── index.html
-├── package.json
-├── tailwind.config.ts
-├── tsconfig.json
-└── vite.config.ts
-```
-
-## 📦 Key Components
-
-- **MarkdownRenderer** - Renders Markdown content with syntax highlighting
-- **BlogLayout** - Main layout component for the blog
-- **PostCard** - Card component for displaying post previews
-- **Navbar** - Navigation bar component
-- **Footer** - Footer component
-
-## 🛠️ Technologies Used
-
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [React Router](https://reactrouter.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React Markdown](https://github.com/remarkjs/react-markdown)
-- [Remark GFM](https://github.com/remarkjs/remark-gfm)
-- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
-- [Gray Matter](https://github.com/jonschlinkert/gray-matter)
-
-## 📱 Responsive Design
-
-The blog is fully responsive and works well on all device sizes:
-
-- **Desktop** - Full layout with sidebar
-- **Tablet** - Adjusted layout for medium screens
-- **Mobile** - Optimized layout for small screens with collapsible menu
-
-## 🔍 SEO
-
-The blog includes basic SEO features:
-
-- Page titles and meta descriptions
-- Open Graph meta tags
-- Semantic HTML
-- Proper heading structure
-
-## 🌐 Deployment
-
-You can deploy this blog to any static hosting service:
-
-- [Netlify](https://www.netlify.com/)
-- [Vercel](https://vercel.com/)
-- [GitHub Pages](https://pages.github.com/)
-- [Cloudflare Pages](https://pages.cloudflare.com/)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgements
-
-- [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [Unsplash](https://unsplash.com/) - Free high-quality images
+Feel free to customize this template for your own blog! If you find any issues or have suggestions for improvements, please open an issue or pull request.

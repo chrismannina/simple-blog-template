@@ -1,4 +1,3 @@
-
 import matter from "gray-matter";
 
 export interface PostMeta {
@@ -41,8 +40,11 @@ export async function getAllPosts(): Promise<PostMeta[]> {
   // Parse frontmatter from each post
   const posts = mockPosts.map(({ slug, content }) => {
     try {
-      // Properly parse the markdown content with gray-matter
+      // Parse the markdown content with gray-matter to extract frontmatter
       const { data } = matter(content);
+      
+      // Log the extracted data for debugging
+      console.log(`Parsed frontmatter for ${slug}:`, data);
       
       // Ensure we extract and format metadata correctly
       return {
@@ -95,21 +97,26 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
     // Parse the frontmatter and content using gray-matter
     const { data, content } = matter(postContent);
     
-    // Extract the actual content without any frontmatter
-    // The content returned by gray-matter should already have frontmatter removed,
-    // but let's ensure we're not including any part of the frontmatter in the content
+    const title = String(data.title || "Untitled Post");
+    
+    // Remove duplicate H1 title from content if it exists
+    // This regex matches an H1 title at the beginning of the content 
+    // (allowing for whitespace) that matches the title in the frontmatter
+    let cleanedContent = content.trim();
+    const titlePattern = new RegExp(`^\\s*# ${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*?\n`, 'i');
+    cleanedContent = cleanedContent.replace(titlePattern, '');
+    
     return {
       meta: {
         slug,
-        title: String(data.title || "Untitled Post"),
+        title: title,
         date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
         excerpt: String(data.excerpt || ""),
         tags: Array.isArray(data.tags) ? data.tags : [],
         coverImage: String(data.coverImage || ""),
       },
-      // Return only the content part without any frontmatter
-      // Remove any duplicate h1 title that might be in the content if it matches the meta title
-      content: content.trim(),
+      // Return only the cleaned content without the duplicate H1 title
+      content: cleanedContent,
     };
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);

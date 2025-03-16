@@ -1,4 +1,3 @@
-
 ---
 title: The Power of Simplicity in Design
 date: 2023-08-22

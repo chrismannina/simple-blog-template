@@ -1,4 +1,3 @@
-
 ---
 title: Creating a Minimalist Workspace for Maximum Productivity
 date: 2023-08-05
