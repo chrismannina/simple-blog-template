@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { getAllPosts, PostMeta } from "@/lib/posts";
@@ -6,7 +5,7 @@ import { formatDate, createPageTitle } from "@/lib/utils";
 import BlogLayout from "@/components/BlogLayout";
 import { Link } from "react-router-dom";
 
-const Archive = () => {
+const Posts = () => {
   const [posts, setPosts] = useState<PostMeta[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -55,14 +54,14 @@ const Archive = () => {
   return (
     <BlogLayout>
       <Helmet>
-        <title>{createPageTitle("Archive")}</title>
+        <title>{createPageTitle("Posts")}</title>
         <meta name="description" content="Browse all blog posts" />
       </Helmet>
 
       <section className="pt-32 pb-16 px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8 animate-slide-up">
-            <h1 className="text-4xl font-bold mb-6">Archive</h1>
+            <h1 className="text-4xl font-bold mb-6">Posts</h1>
             <p className="text-muted-foreground">
               Browse all {filteredPosts.length} post{filteredPosts.length !== 1 && "s"}
               {selectedTag && <> tagged with <span className="font-medium text-foreground">#{selectedTag}</span></>}
@@ -170,4 +169,4 @@ const Archive = () => {
   );
 };
 
-export default Archive;
+export default Posts;

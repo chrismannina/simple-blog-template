@@ -28,7 +28,7 @@ export const blogConfig = {
   navigation: [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Archive", path: "/archive" },
+    { name: "Posts", path: "/posts" },
   ],
   
   // Date formatting

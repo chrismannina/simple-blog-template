@@ -73,7 +73,7 @@ const Home = () => {
             <h2 className="section-title">Recent Articles</h2>
             {recentPosts.length > blogConfig.postsPerPage && (
               <Link
-                to="/archive"
+                to="/posts"
                 className="text-sm font-medium text-accent hover:underline flex items-center"
               >
                 View all posts
