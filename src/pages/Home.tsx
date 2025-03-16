@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -119,14 +118,14 @@ const Home = () => {
       {/* About Section */}
       <section className="py-16 bg-secondary/30">
         <div className="blog-container">
-          <div className="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div className="bg-white dark:bg-card rounded-lg shadow-sm border border-border p-8">
             <h2 className="section-title">About the Author</h2>
             <div className="flex flex-col md:flex-row gap-8 items-center">
               {blogConfig.author.avatar && (
                 <img 
                   src={blogConfig.author.avatar} 
                   alt={blogConfig.author.name}
-                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
+                  className="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-card shadow-md"
                 />
               )}
               <div>

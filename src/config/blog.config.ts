@@ -1,4 +1,3 @@
-
 /**
  * Blog configuration file
  * 
@@ -49,7 +48,11 @@ export const blogConfig = {
   
   // Design configuration
   design: {
-    accentColor: "blue", // Options: "indigo", "blue", "green", "amber"
+    accentColor: "amber", // Options: "indigo", "blue", "green", "amber"
+    darkMode: {
+      enabled: true,
+      default: 'dark', // Options: 'light', 'dark', 'system'
+    },
   },
   
   // Footer

@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -38,6 +37,36 @@
     --radius: 0.5rem;
   }
   
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 243 75% 59%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+  
   * {
     @apply border-border selection:bg-accent/20 selection:text-accent;
   }
@@ -74,8 +103,13 @@
       prose-blockquote:border-l-accent/50 prose-blockquote:bg-accent/5 prose-blockquote:rounded-r-md prose-blockquote:pl-6 prose-blockquote:py-2;
   }
   
+  .dark .prose-custom {
+    @apply prose-invert prose-pre:border-border 
+      prose-a:text-accent prose-blockquote:bg-accent/10;
+  }
+  
   .blog-card {
-    @apply bg-white rounded-lg shadow-sm border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
+    @apply bg-white dark:bg-card rounded-lg shadow-sm border border-border/80 overflow-hidden transition-all duration-300 hover:shadow-md;
   }
   
   .blog-tag {
@@ -92,7 +126,7 @@
   }
   
   .featured-post-card {
-    @apply bg-gradient-to-br from-white to-secondary/20 border border-border rounded-lg shadow-md p-6 md:p-8;
+    @apply bg-gradient-to-br from-white to-secondary/20 dark:from-card dark:to-secondary/50 border border-border rounded-lg shadow-md p-6 md:p-8;
   }
 }
 

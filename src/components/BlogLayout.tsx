@@ -1,9 +1,9 @@
-
 import React from "react";
 import { blogConfig } from "@/config/blog.config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface BlogLayoutProps {
   children: React.ReactNode;
@@ -11,6 +11,8 @@ interface BlogLayoutProps {
 }
 
 const BlogLayout = ({ children, className }: BlogLayoutProps) => {
+  const { theme } = useTheme();
+  
   return (
     <div className={cn(
       "min-h-screen flex flex-col",

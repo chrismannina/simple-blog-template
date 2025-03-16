@@ -11,7 +11,7 @@ A clean, minimalist blog template built with React, Vite, and Markdown for conte
 - 📱 Mobile-friendly
 - 🖼️ Cover image support
 - 🔍 SEO-friendly
-- 🌙 Dark mode (optional)
+- 🌙 Dark mode toggle with system preference detection
 
 ## Getting Started
 
@@ -90,6 +90,28 @@ You can customize your blog by editing the `src/config/blog.config.ts` file. Thi
 - Navigation links
 - Date formatting
 - And more!
+
+## Dark Mode
+
+This blog template includes a fully functional dark mode with the following features:
+
+- Toggle button in the navigation bar
+- System preference detection
+- Persistent preference (saved to localStorage)
+- Beautiful dark theme styling
+- Smooth transitions between light and dark modes
+
+You can configure dark mode options in the `blog.config.ts` file:
+
+```typescript
+design: {
+  accentColor: "green", // Choose from: "indigo", "blue", "green", "amber"
+  darkMode: {
+    enabled: true,
+    default: 'system', // Choose from: 'light', 'dark', 'system'
+  },
+},
+```
 
 ## Building for Production
 
