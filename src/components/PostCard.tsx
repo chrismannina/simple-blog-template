@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { blogConfig } from "@/config/blog.config";
 import { PostMeta } from "@/lib/posts";
@@ -14,10 +13,35 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
     <article 
       className={featured ? "featured-post-card" : "blog-card"}
     >
-      <div className={`${featured ? "" : "p-6"}`}>
+      <div className={`${featured ? "" : "p-5"}`}>
+        {post.coverImage && (
+          <Link
+            to={`/blog/${post.slug}`}
+            className={`block overflow-hidden ${featured ? "mb-5" : "mb-4"}`}
+          >
+            <img 
+              src={post.coverImage} 
+              alt={post.title}
+              className={`w-full object-cover transition-transform duration-300 hover:scale-[1.02] rounded-sm ${
+                featured ? "h-[300px]" : "h-[180px]"
+              }`}
+            />
+          </Link>
+        )}
+        
+        <Link to={`/blog/${post.slug}`}>
+          <h2 className={`${featured ? "text-xl md:text-2xl" : "text-lg"} font-serif font-medium mb-2 hover:text-accent transition-colors`}>
+            {post.title}
+          </h2>
+        </Link>
+        
+        <time className="text-xs text-muted-foreground mb-3 block">
+          {formatDate(post.date)}
+        </time>
+        
         {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.slice(0, 3).map((tag) => (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {post.tags.slice(0, 2).map((tag) => (
               <span key={tag} className="blog-tag">
                 {tag}
               </span>
@@ -25,42 +49,17 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
           </div>
         )}
         
-        {post.coverImage && (
-          <Link
-            to={`/blog/${post.slug}`}
-            className={`block overflow-hidden ${featured ? "mb-6" : "mb-4"}`}
-          >
-            <img 
-              src={post.coverImage} 
-              alt={post.title}
-              className={`w-full object-cover transition-transform duration-500 hover:scale-105 rounded-md ${
-                featured ? "h-[400px]" : "h-[220px]"
-              }`}
-            />
-          </Link>
-        )}
-        
-        <Link to={`/blog/${post.slug}`}>
-          <h2 className={`${featured ? "text-2xl md:text-3xl" : "text-xl"} font-serif font-semibold mb-3 hover:text-accent transition-colors`}>
-            {post.title}
-          </h2>
-        </Link>
-        
-        <time className="text-sm text-muted-foreground mb-3 block">
-          {formatDate(post.date)}
-        </time>
-        
         {blogConfig.showExcerptInList && (
-          <p className="text-muted-foreground line-clamp-3 mb-5 leading-relaxed">{post.excerpt}</p>
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-4 leading-relaxed">{post.excerpt}</p>
         )}
         
         <Link
           to={`/blog/${post.slug}`}
-          className="inline-flex items-center text-sm font-medium text-accent hover:underline"
+          className="inline-flex items-center text-xs font-medium text-accent hover:underline"
         >
           Read more
           <svg
-            className="ml-1.5 w-4 h-4 transition-transform group-hover:translate-x-1"
+            className="ml-1 w-3.5 h-3.5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -70,7 +69,7 @@ const PostCard = ({ post, featured = false }: PostCardProps) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
             ></path>
           </svg>
         </Link>

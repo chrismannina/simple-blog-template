@@ -38,13 +38,13 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-16 pb-12">
+      <section className="pt-14 pb-8">
         <div className="blog-container">
-          <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4">
+          <div className="text-center mb-10">
+            <h1 className="font-serif text-3xl md:text-4xl font-medium mb-3">
               {blogConfig.title}
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-lg mx-auto">
               {blogConfig.description}
             </p>
           </div>
@@ -53,12 +53,12 @@ const Home = () => {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-12 bg-secondary/30">
+        <section className="pb-8">
           <div className="blog-container">
-            <h2 className="section-title">Featured Post</h2>
+            <h2 className="section-title mb-5">Latest Post</h2>
             
             {loading ? (
-              <div className="h-96 rounded-lg bg-white animate-pulse" />
+              <div className="h-64 bg-muted rounded-sm animate-pulse" />
             ) : (
               <PostCard post={featuredPost} featured />
             )}
@@ -67,18 +67,18 @@ const Home = () => {
       )}
 
       {/* Recent Posts */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="blog-container">
-          <div className="flex justify-between items-center mb-10">
-            <h2 className="section-title">Recent Articles</h2>
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="section-title">Recent Posts</h2>
             {recentPosts.length > blogConfig.postsPerPage && (
               <Link
                 to="/posts"
-                className="text-sm font-medium text-accent hover:underline flex items-center"
+                className="text-sm font-medium text-accent hover:text-accent/80 transition-colors flex items-center"
               >
-                View all posts
+                View all
                 <svg
-                  className="ml-1 w-4 h-4"
+                  className="ml-1 w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -96,19 +96,19 @@ const Home = () => {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-80 rounded-lg bg-white animate-pulse" />
+                <div key={i} className="h-56 bg-muted rounded-sm animate-pulse" />
               ))}
             </div>
           ) : recentPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {recentPosts.slice(0, 4).map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
           ) : (
-            <p className="text-muted-foreground bg-white p-6 rounded-lg shadow-sm border border-border">
+            <p className="text-sm text-muted-foreground bg-muted p-4 rounded-sm border border-border">
               No recent posts available.
             </p>
           )}
@@ -116,29 +116,29 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-16 bg-secondary/30">
+      <section className="py-10 border-t border-border">
         <div className="blog-container">
-          <div className="bg-white dark:bg-card rounded-lg shadow-sm border border-border p-8">
-            <h2 className="section-title">About the Author</h2>
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="bg-secondary/30 dark:bg-secondary/20 rounded-sm p-5 md:p-6">
+            <h2 className="section-title">About</h2>
+            <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
               {blogConfig.author.avatar && (
                 <img 
                   src={blogConfig.author.avatar} 
                   alt={blogConfig.author.name}
-                  className="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-card shadow-md"
+                  className="w-24 h-24 rounded-full object-cover"
                 />
               )}
               <div>
-                <h3 className="font-serif text-xl font-semibold mb-3">{blogConfig.author.name}</h3>
-                <p className="text-muted-foreground mb-4">{blogConfig.author.bio}</p>
-                <div className="flex gap-4">
+                <h3 className="font-serif text-lg font-medium mb-2">{blogConfig.author.name}</h3>
+                <p className="text-sm text-muted-foreground mb-3">{blogConfig.author.bio}</p>
+                <div className="flex gap-3">
                   {Object.entries(blogConfig.author.social).map(([platform, url]) => (
                     <a 
                       key={platform}
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent hover:underline capitalize"
+                      className="text-xs text-accent hover:text-accent/80 transition-colors capitalize"
                     >
                       {platform}
                     </a>

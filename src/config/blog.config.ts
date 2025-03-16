@@ -8,7 +8,7 @@
 export const blogConfig = {
   // Basic information
   title: "Simple Blog",
-  description: "A clean, minimalist blog.",
+  description: "A clean, minimalist blog for your thoughts.",
   author: {
     name: "Chris Mannina",
     bio: "Creator of Simple Blog. Writing about design, technology, and ideas that matter.",
@@ -27,8 +27,8 @@ export const blogConfig = {
   // Navigation
   navigation: [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
     { name: "Posts", path: "/posts" },
+    { name: "About", path: "/about" },
   ],
   
   // Date formatting
@@ -48,10 +48,10 @@ export const blogConfig = {
   
   // Design configuration
   design: {
-    accentColor: "amber", // Options: "indigo", "blue", "green", "amber"
+    accentColor: "blue", // Options: "indigo", "blue", "green", "amber"
     darkMode: {
       enabled: true,
-      default: 'dark', // Options: 'light', 'dark', 'system'
+      default: 'system', // Options: 'light', 'dark', 'system'
     },
   },
   

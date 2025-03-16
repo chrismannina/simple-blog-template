@@ -58,23 +58,22 @@ const Posts = () => {
         <meta name="description" content="Browse all blog posts" />
       </Helmet>
 
-      <section className="pt-32 pb-16 px-6 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-8 animate-slide-up">
-            <h1 className="text-4xl font-bold mb-6">Posts</h1>
-            <p className="text-muted-foreground">
-              Browse all {filteredPosts.length} post{filteredPosts.length !== 1 && "s"}
-              {selectedTag && <> tagged with <span className="font-medium text-foreground">#{selectedTag}</span></>}
+      <section className="pt-24 pb-12 px-4 md:px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-6">
+            <h1 className="text-3xl font-serif font-medium mb-3">Posts</h1>
+            <p className="text-sm text-muted-foreground">
+              All posts {selectedTag && <span>tagged with <span className="font-medium text-foreground">#{selectedTag}</span></span>}
             </p>
           </div>
 
           {/* Tags */}
           {allTags.length > 0 && (
-            <div className="mb-10 animate-fade-in">
-              <div className="flex flex-wrap gap-2">
+            <div className="mb-8">
+              <div className="flex flex-wrap gap-1.5">
                 <button
                   onClick={() => setSelectedTag(null)}
-                  className={`text-sm px-3 py-1 rounded-full transition-colors ${
+                  className={`text-xs px-2.5 py-1 rounded-full transition-colors ${
                     selectedTag === null
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -87,7 +86,7 @@ const Posts = () => {
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                    className={`text-sm px-3 py-1 rounded-full transition-colors ${
+                    className={`text-xs px-2.5 py-1 rounded-full transition-colors ${
                       tag === selectedTag
                         ? "bg-primary text-primary-foreground"
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -102,42 +101,42 @@ const Posts = () => {
 
           {/* Posts by year */}
           {loading ? (
-            <div className="space-y-6 animate-pulse">
+            <div className="space-y-4">
               {[...Array(3)].map((_, i) => (
                 <div key={i} className="space-y-2">
-                  <div className="h-6 bg-muted rounded w-24"></div>
-                  <div className="h-14 bg-muted rounded w-full"></div>
-                  <div className="h-14 bg-muted rounded w-full"></div>
+                  <div className="h-5 bg-muted rounded w-20"></div>
+                  <div className="h-10 bg-muted rounded w-full"></div>
+                  <div className="h-10 bg-muted rounded w-full"></div>
                 </div>
               ))}
             </div>
           ) : filteredPosts.length > 0 ? (
-            <div className="space-y-12 animate-fade-in">
+            <div className="space-y-10">
               {sortedYears.map((year) => (
                 <div key={year}>
-                  <h2 className="text-xl font-bold mb-4">{year}</h2>
-                  <div className="space-y-4 divide-y divide-border">
+                  <h2 className="text-lg font-medium font-serif mb-3">{year}</h2>
+                  <div className="space-y-4 divide-y divide-border/60">
                     {postsByYear[year].map((post) => (
                       <div key={post.slug} className="pt-4">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
                           <Link
                             to={`/blog/${post.slug}`}
-                            className="text-lg font-medium hover:text-primary transition-colors"
+                            className="text-base font-medium hover:text-accent transition-colors"
                           >
                             {post.title}
                           </Link>
-                          <time className="text-sm text-muted-foreground mt-1 sm:mt-0">
+                          <time className="text-xs text-muted-foreground mt-1 sm:mt-0">
                             {formatDate(post.date)}
                           </time>
                         </div>
                         
                         {post.tags && post.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mt-2">
+                          <div className="flex flex-wrap gap-1.5 mt-2">
                             {post.tags.map((tag) => (
                               <button
                                 key={tag}
                                 onClick={() => setSelectedTag(tag)}
-                                className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                                className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors"
                               >
                                 {tag}
                               </button>
@@ -151,12 +150,12 @@ const Posts = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 bg-secondary/30 rounded-lg animate-fade-in">
-              <p className="text-muted-foreground mb-4">No posts found matching your criteria.</p>
+            <div className="text-center py-10 bg-secondary/20 rounded-sm">
+              <p className="text-sm text-muted-foreground mb-4">No posts found matching your criteria.</p>
               {selectedTag && (
                 <button
                   onClick={() => setSelectedTag(null)}
-                  className="text-sm font-medium px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="text-xs font-medium px-3 py-1.5 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   Clear filter
                 </button>

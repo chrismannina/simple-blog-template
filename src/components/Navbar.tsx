@@ -10,7 +10,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Use the configured accent color
-  const themeClass = `theme-${blogConfig.design.accentColor || 'indigo'}`;
+  const themeClass = `theme-${blogConfig.design.accentColor || 'blue'}`;
   
   // Apply theme class to html element
   useEffect(() => {
@@ -35,15 +35,17 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-6 md:px-8",
-        scrolled ? "bg-white/90 dark:bg-background/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-3 px-4 md:px-6 border-b",
+        scrolled 
+          ? "bg-white/95 dark:bg-background/95 backdrop-blur-sm border-border" 
+          : "bg-transparent border-transparent"
       )}
     >
-      <div className="max-w-5xl mx-auto flex items-center justify-between">
+      <div className="max-w-3xl mx-auto flex items-center justify-between">
         {/* Logo/Blog Title */}
         <Link
           to="/"
-          className="text-xl font-medium tracking-tight hover:text-accent transition-colors"
+          className="text-lg font-medium font-serif tracking-tight hover:text-accent transition-colors"
         >
           {blogConfig.title}
         </Link>
@@ -55,16 +57,11 @@ const Navbar = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-sm font-medium transition-all hover:text-accent relative",
-                location.pathname === item.path
-                  ? "text-accent"
-                  : "text-muted-foreground"
+                "nav-link",
+                location.pathname === item.path && "active"
               )}
             >
               {item.name}
-              {location.pathname === item.path && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full transform origin-left animate-slide-up" />
-              )}
             </Link>
           ))}
           
@@ -77,14 +74,14 @@ const Navbar = () => {
           <ThemeToggle />
           
           <button
-            className="flex flex-col space-y-1.5 items-center justify-center w-8 h-8"
+            className="flex flex-col space-y-1 items-center justify-center w-8 h-8 button-reset"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
             <span
               className={cn(
                 "w-5 h-0.5 bg-foreground rounded-full transition-transform duration-300",
-                mobileMenuOpen && "transform rotate-45 translate-y-2"
+                mobileMenuOpen && "transform rotate-45 translate-y-1.5"
               )}
             />
             <span
@@ -96,7 +93,7 @@ const Navbar = () => {
             <span
               className={cn(
                 "w-5 h-0.5 bg-foreground rounded-full transition-transform duration-300",
-                mobileMenuOpen && "transform -rotate-45 -translate-y-2"
+                mobileMenuOpen && "transform -rotate-45 -translate-y-1.5"
               )}
             />
           </button>
@@ -106,8 +103,8 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "fixed inset-0 pt-20 bg-white/95 dark:bg-background/95 backdrop-blur-lg md:hidden z-40 transition-transform duration-300 transform",
-          mobileMenuOpen ? "translate-y-0" : "translate-y-full"
+          "fixed inset-0 pt-16 bg-white/95 dark:bg-background/95 backdrop-blur-sm md:hidden z-40 transition-opacity duration-300",
+          mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <nav className="flex flex-col items-center space-y-6 p-8">
@@ -116,10 +113,10 @@ const Navbar = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "text-lg font-medium transition-colors",
+                "text-base font-medium transition-colors",
                 location.pathname === item.path
                   ? "text-accent"
-                  : "text-muted-foreground hover:text-accent"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               {item.name}

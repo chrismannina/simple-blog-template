@@ -13,7 +13,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
     <button
       onClick={toggleTheme}
       className={cn(
-        "w-10 h-10 flex items-center justify-center rounded-full hover:bg-secondary transition-colors",
+        "w-8 h-8 flex items-center justify-center rounded-full hover:bg-secondary transition-colors",
         className
       )}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -26,7 +26,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"
@@ -42,7 +42,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5"
+          className="w-4 h-4"
         >
           <path
             strokeLinecap="round"

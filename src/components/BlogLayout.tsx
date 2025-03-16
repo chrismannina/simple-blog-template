@@ -16,11 +16,11 @@ const BlogLayout = ({ children, className }: BlogLayoutProps) => {
   return (
     <div className={cn(
       "min-h-screen flex flex-col",
-      `theme-${blogConfig.design.accentColor || 'indigo'}`
+      `theme-${blogConfig.design.accentColor || 'blue'}`
     )}>
       <Navbar />
-      <div className="w-full mx-auto pt-20">
-        <main className={cn("flex-1 transition-all duration-300 animate-fade-in pb-16", className)}>
+      <div className="w-full mx-auto pt-16">
+        <main className={cn("flex-1 transition-colors duration-150 pb-10", className)}>
           {children}
         </main>
       </div>
