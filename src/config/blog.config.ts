@@ -7,21 +7,21 @@
 
 export const blogConfig = {
   // Basic information
-  title: "Simple Blog",
-  description: "A clean, minimalist blog for your thoughts.",
+  title: "Simple Blog Template",
+  description: "A clean, minimal blog template built with React, TypeScript, and Tailwind CSS.",
   author: {
     name: "Chris Mannina",
-    bio: "Creator of Simple Blog. Writing about design, technology, and ideas that matter.",
+    bio: "Software developer passionate about creating lightweight, easy-to-use blog templates.",
     avatar: "/avatar.png", // Place your avatar image in the public folder
     social: {
       twitter: "https://twitter.com/chrismannina",
-      github: "https://github.com/chrismannina",
+      github: "https://github.com/chrismannina/blogmaker-template",
       linkedin: "https://linkedin.com/in/chrismannina",
     },
   },
   
   // Site configuration
-  baseUrl: "https://simpleblog.md",
+  baseUrl: "https://blogmaker-template.vercel.app",
   locale: "en-US",
   
   // Navigation
@@ -29,6 +29,7 @@ export const blogConfig = {
     { name: "Home", path: "/" },
     { name: "Posts", path: "/posts" },
     { name: "About", path: "/about" },
+    { name: "GitHub", path: "https://github.com/chrismannina/blogmaker-template" },
   ],
   
   // Date formatting
@@ -57,10 +58,10 @@ export const blogConfig = {
   
   // Footer
   footer: {
-    text: "© 2025 Simple Blog. All rights reserved.",
+    text: "© 2025 Simple Blog Template. Built with React, TypeScript, and Tailwind CSS.",
     links: [
-      { name: "Privacy", path: "/privacy" },
-      { name: "Terms", path: "/terms" },
+      { name: "GitHub", path: "https://github.com/chrismannina/blogmaker-template" },
+      { name: "License", path: "https://github.com/chrismannina/blogmaker-template/blob/main/LICENSE" },
     ],
   },
 };

@@ -1,13 +1,14 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
+import { act } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import Home from '@/pages/Home';
-import { getAllPosts } from '@/lib/posts';
+import { ThemeProvider } from '../../src/contexts/ThemeContext';
+import Home from '../../src/pages/Home';
+import { getAllPosts } from '../../src/lib/posts';
 
 // Mock the getAllPosts function
-vi.mock('@/lib/posts', () => ({
+vi.mock('../../src/lib/posts', () => ({
   getAllPosts: vi.fn(),
 }));
 
@@ -43,13 +44,15 @@ describe('Home Page', () => {
   });
 
   it('should render the blog title', async () => {
-    render(
-      <MemoryRouter>
-        <ThemeProvider>
-          <Home />
-        </ThemeProvider>
-      </MemoryRouter>
-    );
+    await act(async () => {
+      render(
+        <MemoryRouter>
+          <ThemeProvider>
+            <Home />
+          </ThemeProvider>
+        </MemoryRouter>
+      );
+    });
 
     // Wait for the component to load posts
     await waitFor(() => {
@@ -57,10 +60,21 @@ describe('Home Page', () => {
     });
 
     // Blog title should be visible (we don't know the exact title, so we check that any heading is rendered)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toBeDefined();
   });
 
-  it('should display loading state initially', () => {
+  it('should display loading state initially', async () => {
+    // Mock delay for the getAllPosts function
+    (getAllPosts as any).mockImplementation(() => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve([]);
+        }, 100);
+      });
+    });
+    
+    // Render without awaiting act completion to catch the loading state
     render(
       <MemoryRouter>
         <ThemeProvider>
@@ -68,20 +82,27 @@ describe('Home Page', () => {
         </ThemeProvider>
       </MemoryRouter>
     );
-
+    
     // Check that the loading state (skeleton) is initially visible
     const skeletonElements = document.querySelectorAll('.animate-pulse');
     expect(skeletonElements.length).toBeGreaterThan(0);
+    
+    // Wait for any pending updates to complete
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 150));
+    });
   });
 
   it('should display posts after loading', async () => {
-    render(
-      <MemoryRouter>
-        <ThemeProvider>
-          <Home />
-        </ThemeProvider>
-      </MemoryRouter>
-    );
+    await act(async () => {
+      render(
+        <MemoryRouter>
+          <ThemeProvider>
+            <Home />
+          </ThemeProvider>
+        </MemoryRouter>
+      );
+    });
 
     // Wait for posts to load
     await waitFor(() => {
@@ -89,7 +110,9 @@ describe('Home Page', () => {
     });
 
     // Should display post titles
-    expect(await screen.findByText('Hello World')).toBeInTheDocument();
-    expect(await screen.findByText('Second Post')).toBeInTheDocument();
+    const helloWorldElement = await screen.findByText('Hello World');
+    const secondPostElement = await screen.findByText('Second Post');
+    expect(helloWorldElement).toBeDefined();
+    expect(secondPostElement).toBeDefined();
   });
 }); 

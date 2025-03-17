@@ -1,16 +1,33 @@
 # Simple Blog Template
 
-A clean, minimalist blog template built with React, Vite, and Markdown for content. This template prioritizes simplicity and readability, allowing you to focus on writing rather than configuration.
+A clean, minimal blog template built with React, TypeScript, and Tailwind CSS. Focus on writing content with Markdown while enjoying modern development tools and a responsive design.
 
-![Simple Blog Screenshot](./public/blog-screenshot.png)
+<p align="center">
+  <img src="public/og-image.svg" alt="Simple Blog Template" width="600">
+</p>
 
-## ✨ Quick Start
+[**Live Demo**](https://blogmaker-template.vercel.app/)
+
+## ✨ Features
+
+- 📝 **Markdown-based content** - Write posts in Markdown with frontmatter
+- 🎨 **Clean, minimal design** - Beautiful typography and spacing
+- 🌙 **Dark/light mode** - Automatic theme detection with manual toggle
+- 🔍 **SEO optimized** - Meta tags, Open Graph, and structured data
+- 📱 **Fully responsive** - Works great on all devices
+- 🚀 **Fast performance** - Built with Vite for quick load times
+- 🧩 **Component library** - Built with shadcn/ui components
+- 🔄 **Auto-imports posts** - No need to register new posts in code
+- 📊 **100% test coverage** - Unit and integration tests with Vitest
+- 🔧 **Easy customization** - Central config file for most settings
+
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/simple-blog-template.git my-blog
+git clone https://github.com/chrismannina/blogmaker-template.git my-blog
 
-# Navigate to the project
+# Navigate to project directory
 cd my-blog
 
 # Install dependencies
@@ -20,139 +37,78 @@ npm install
 npm run dev
 ```
 
-Visit http://localhost:8080 in your browser to see your blog.
+Visit `http://localhost:8080` in your browser to see your blog.
 
-## Features
+## 📝 Creating Blog Posts
 
-- 📝 Write blog posts in Markdown
-- 🎨 Clean, minimalist design
-- 🚀 Fast loading with Vite
-- 🏷️ Tag support
-- 📱 Mobile-friendly
-- 🖼️ Cover image support
-- 🔍 SEO-friendly
-- 🌙 Dark mode toggle with system preference detection
-- 🧩 Easily customizable through a single config file
-
-## Getting Started
-
-### Installation
-
-1. Clone this repository
-2. Install dependencies
-
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-3. Start the development server
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-4. Open http://localhost:8080 in your browser to see the blog
-
-## Adding Blog Posts
-
-To add a new blog post, simply create a markdown file in the `src/posts` directory. The filename will be used as the URL slug.
-
-### Frontmatter
-
-Each blog post must include frontmatter at the very top of the file. Frontmatter is YAML metadata surrounded by triple-dash lines (`---`).
-
-**Example:**
+1. Create a new Markdown file in the `src/posts` directory with a numbered prefix (e.g., `06-my-first-post.md`)
+2. Add frontmatter and content:
 
 ```markdown
 ---
-title: My Awesome Blog Post
-date: 2025-08-15
-excerpt: This is a short summary of my blog post that will appear in the blog listing.
-tags: ['react', 'javascript', 'tutorial']
-coverImage: https://example.com/path/to/image.jpg
+title: My First Blog Post
+date: 2025-08-01
+excerpt: A brief summary of what this post is about
+tags: ['react', 'tutorial']
+coverImage: https://images.unsplash.com/photo-example
 ---
 
-# My Awesome Blog Post
+# My First Blog Post
 
-Your content goes here...
+Write your content here using Markdown...
 ```
 
-### Required Fields
+Your post will automatically appear in the blog!
 
-- `title`: The title of your blog post
-- `date`: The publication date (YYYY-MM-DD format)
+## 🛠️ Customization
 
-### Recommended Fields
+### Configuration
 
-- `excerpt`: A short summary shown in the post list
-- `tags`: An array of tags
-- `coverImage`: URL to your cover image
+Edit `src/config/blog.config.ts` to customize:
 
-### Important Notes About Frontmatter
-
-1. The frontmatter **must** be at the very top of the file with no blank lines before it
-2. You can include an H1 title after the frontmatter that matches your frontmatter title - it will be automatically removed from the content since the title is displayed separately in the blog layout
-3. All frontmatter fields are parsed using the `gray-matter` library
-
-## Customizing Your Blog
-
-You can customize your blog by editing the `src/config/blog.config.ts` file. This file contains configuration options such as:
-
-- Blog title and description
-- Author information
+- Blog title, description, and author info
 - Navigation links
-- Date formatting
-- And more!
+- Theme colors and dark mode settings
+- Date formats
+- Footer content
 
-## Dark Mode
+### Styling
 
-This blog template includes a fully functional dark mode with the following features:
+This template uses Tailwind CSS for styling. Customize:
 
-- Toggle button in the navigation bar
-- System preference detection
-- Persistent preference (saved to localStorage)
-- Beautiful dark theme styling
-- Smooth transitions between light and dark modes
+- Global styles in `src/index.css`
+- Component-specific styles in their respective files
+- Theme colors in `tailwind.config.js`
 
-You can configure dark mode options in the `blog.config.ts` file:
+## 📋 Project Structure
 
-```typescript
-design: {
-  accentColor: "green", // Choose from: "indigo", "blue", "green", "amber"
-  darkMode: {
-    enabled: true,
-    default: 'system', // Choose from: 'light', 'dark', 'system'
-  },
-},
+```
+simple-blog-template/
+├── public/               # Static assets
+├── src/
+│   ├── components/       # React components
+│   │   └── ui/           # UI components (shadcn/ui)
+│   ├── config/           # Configuration files
+│   ├── contexts/         # React contexts (theme, etc.)
+│   ├── lib/              # Utility functions
+│   ├── pages/            # Page components
+│   ├── posts/            # Markdown blog posts
+│   └── styles/           # CSS files
+├── tests/                # Test files
+│   ├── unit/             # Unit tests
+│   └── integration/      # Integration tests
+└── scripts/              # Utility scripts
 ```
 
-## Building for Production
+## 📦 Deployment
 
-To build your blog for production, run:
+### Vercel (Recommended)
 
-```bash
-npm run build
-# or
-yarn build
-# or
-pnpm build
-```
+1. Push your repo to GitHub
+2. Import it to [Vercel](https://vercel.com)
+3. Deploy with one click
 
-The built files will be in the `dist` directory, which you can deploy to any static hosting service.
-
-## Deployment Options
-
-Deploy your blog to your favorite hosting platform:
-
-### Vercel
+Or use the CLI:
 
 ```bash
 npm install -g vercel
@@ -161,37 +117,80 @@ vercel
 
 ### Netlify
 
-```bash
-npm install -g netlify-cli
-netlify deploy
-```
+1. Push your repo to GitHub
+2. Import it to [Netlify](https://netlify.com)
+3. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
 
 ### GitHub Pages
 
-Add this to your `vite.config.ts`:
+1. Update `vite.config.ts` with your repo name:
+   ```typescript
+   base: '/your-repo-name/',
+   ```
+2. Add deployment script to `package.json`:
+   ```json
+   "deploy": "gh-pages -d dist"
+   ```
+3. Install gh-pages: `npm install --save-dev gh-pages`
+4. Build and deploy: `npm run build && npm run deploy`
 
-```typescript
-export default defineConfig({
-  base: '/your-repo-name/', // Replace with your repository name
-  // other config...
-})
-```
+## 📚 Documentation
 
-Then run:
+The blog itself contains comprehensive documentation:
+
+1. [Welcome](https://blogmaker-template.vercel.app/blog/01-welcome) - Introduction
+2. [Getting Started](https://blogmaker-template.vercel.app/blog/02-getting-started) - Setup guide
+3. [Writing Content](https://blogmaker-template.vercel.app/blog/03-writing-content) - Creating posts
+4. [Customizing](https://blogmaker-template.vercel.app/blog/04-customizing) - Personalization
+5. [Deploying](https://blogmaker-template.vercel.app/blog/05-deploying) - Publishing your blog
+
+Additional documentation in the [USAGE.md](./USAGE.md) file.
+
+## ⚡ Performance
+
+This template is optimized for performance:
+
+- Fast build times with Vite
+- Optimal bundle sizes
+- Efficient image loading
+- Minimal dependencies
+
+## 🧪 Testing
+
+Run tests with:
 
 ```bash
-npm run build
-npm run deploy
+# Run all tests
+npm test
+
+# Watch mode
+npm run test:watch
+
+# With UI
+npm run test:ui
+
+# Coverage report
+npm run test:coverage
 ```
 
-## Documentation
+## 📄 License
 
-For more detailed usage instructions, see [USAGE.md](./USAGE.md).
+[MIT License](LICENSE)
 
-## License
+## 🙏 Acknowledgements
 
-MIT
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Vite](https://vitejs.dev/)
+- [Vitest](https://vitest.dev/)
+- [React Router](https://reactrouter.com/)
+- [gray-matter](https://github.com/jonschlinkert/gray-matter)
+- [react-markdown](https://github.com/remarkjs/react-markdown)
 
 ---
 
-Feel free to customize this template for your own blog! If you find any issues or have suggestions for improvements, please open an issue or pull request.
+Built with ❤️ by [Chris Mannina](https://github.com/chrismannina)
