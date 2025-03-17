@@ -12,7 +12,7 @@ export const blogConfig = {
   author: {
     name: "Chris Mannina",
     bio: "Software developer passionate about creating lightweight, easy-to-use blog templates.",
-    avatar: "/avatar.png", // Place your avatar image in the public folder
+    avatar: "/author-silhouette.svg",
     social: {
       twitter: "https://twitter.com/chrismannina",
       github: "https://github.com/chrismannina/simple-blog-template",

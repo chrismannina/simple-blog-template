@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <circle cx="256" cy="256" r="256" fill="url(#gradient)"/>
+  
+  <!-- Silhouette -->
+  <path d="M256 146
+           C226 146 204 168 204 210
+           C204 252 218 274 234 284
+           C234 284 238 302 236 306
+           C234 310 204 316 186 326
+           C168 336 162 340 150 360
+           C138 380 136 412 136 412
+           L376 412
+           C376 412 374 380 362 360
+           C350 340 344 336 326 326
+           C308 316 278 310 276 306
+           C274 302 278 284 278 284
+           C294 274 308 252 308 210
+           C308 168 286 146 256 146Z" 
+        fill="white"/>
+  
+  <!-- Define gradient -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1E40AF"/>
+    </linearGradient>
+  </defs>
+</svg> 
