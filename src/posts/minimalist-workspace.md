@@ -1,50 +1,296 @@
 ---
-title: Deploying Your Blog
-date: 2025-04-10
-excerpt: Step-by-step guide to deploying your Simple Blog to various hosting platforms like Vercel, Netlify, or GitHub Pages.
-tags: ['deployment', 'tutorial']
-coverImage: https://images.unsplash.com/photo-1497215728101-856f4ea42174
+title: Writing Content with Markdown
+date: 2025-07-15
+excerpt: Learn how to format your blog posts with Markdown, add images, code blocks, and other elements to create rich, engaging content.
+tags: ['markdown', 'tutorial', 'content']
+coverImage: https://images.unsplash.com/photo-1517842645767-c639042777db
 ---
 
-# Deploying Your Blog
+# Writing Content with Markdown
 
-Once you've customized your blog, you'll want to share it with the world. Here's how to deploy it to various platforms.
+This blog template uses Markdown for formatting blog posts. Markdown is a lightweight markup language that allows you to write formatted content using a plain-text editor. This guide will show you how to use Markdown to create beautifully formatted blog posts.
 
-## Building for Production
+## Creating a New Blog Post
 
-First, build your project:
+To create a new blog post:
 
-```bash
-npm run build
+1. Add a new Markdown file (`.md`) to the `src/posts` directory
+2. Include frontmatter at the top of the file
+3. Write your content using Markdown syntax
+
+## Understanding Frontmatter
+
+Frontmatter is metadata about your post, enclosed in triple dashes (`---`). Here's an example:
+
+```yaml
+---
+title: My Amazing Blog Post
+date: 2025-08-01
+excerpt: A short description of your post that will appear in previews.
+tags: ['react', 'javascript', 'tutorial']
+coverImage: https://images.unsplash.com/photo-example
+---
 ```
 
-This creates optimized files in the `dist` directory.
+### Required Frontmatter Fields
 
-## Deployment Options
+- **title**: The title of your blog post
+- **date**: The publication date (YYYY-MM-DD format)
+- **excerpt**: A brief summary of the post
 
-### Vercel (Recommended)
+### Optional Frontmatter Fields
 
-1. Install Vercel CLI: `npm install -g vercel`
-2. Run: `vercel`
+- **tags**: An array of tags related to your post
+- **coverImage**: A URL to the cover image for your post
+- **author**: Override the default author (defined in config)
 
-### Netlify
+## Markdown Basics
 
-1. Install Netlify CLI: `npm install -g netlify-cli`
-2. Run: `netlify deploy`
+### Headings
 
-### GitHub Pages
+Use `#` symbols for headings:
 
-Add this to your `vite.config.ts`:
-
-```typescript
-export default defineConfig({
-  base: '/your-repo-name/',
-  // other config...
-})
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
 ```
 
-Then deploy using GitHub Actions or the gh-pages package.
+### Text Formatting
 
-## Custom Domain
+```markdown
+*Italic text* or _italic text_
+**Bold text** or __bold text__
+***Bold and italic text***
+~~Strikethrough text~~
+```
 
-All these platforms support custom domains. Check their documentation for setting up your domain name with your deployed blog.
+### Lists
+
+Unordered lists:
+
+```markdown
+- Item 1
+- Item 2
+  - Nested item 1
+  - Nested item 2
+- Item 3
+```
+
+Ordered lists:
+
+```markdown
+1. First item
+2. Second item
+3. Third item
+```
+
+### Links
+
+```markdown
+[Link text](https://example.com)
+[Link with title](https://example.com "Title text")
+```
+
+### Images
+
+```markdown
+![Alt text](https://example.com/image.jpg)
+![Alt text](https://example.com/image.jpg "Optional title")
+```
+
+To control image size, you can use HTML:
+
+```markdown
+<img src="https://example.com/image.jpg" alt="Alt text" width="300" />
+```
+
+## Advanced Markdown Features
+
+### Code Blocks
+
+For inline code, use backticks:
+
+```markdown
+Use the `console.log()` function to debug.
+```
+
+For code blocks, use triple backticks with an optional language identifier:
+
+```markdown
+​```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+​```
+```
+
+Supported languages for syntax highlighting include:
+- javascript/jsx
+- typescript/tsx
+- html
+- css
+- json
+- bash/shell
+- python
+- ruby
+- and many more...
+
+### Blockquotes
+
+```markdown
+> This is a blockquote.
+> 
+> It can span multiple lines.
+```
+
+### Horizontal Rules
+
+Create a horizontal rule with three hyphens, asterisks, or underscores:
+
+```markdown
+---
+```
+
+### Tables
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+```
+
+### Task Lists
+
+```markdown
+- [x] Completed task
+- [ ] Incomplete task
+```
+
+## Including Media
+
+### Images
+
+As mentioned earlier, images can be included using the Markdown syntax:
+
+```markdown
+![Alt text](https://example.com/image.jpg)
+```
+
+For responsive images, you can use HTML with CSS classes:
+
+```html
+<img 
+  src="https://example.com/image.jpg" 
+  alt="Alt text" 
+  class="rounded-lg shadow-md max-w-full"
+/>
+```
+
+### Videos
+
+Embed videos using HTML (supports YouTube, Vimeo, etc.):
+
+```html
+<div class="aspect-w-16 aspect-h-9">
+  <iframe 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen
+  ></iframe>
+</div>
+```
+
+## SEO Optimization
+
+To optimize your blog posts for search engines:
+
+1. Use descriptive titles that include keywords
+2. Write comprehensive excerpts
+3. Include relevant tags
+4. Use heading tags (`#`, `##`, etc.) appropriately
+5. Add descriptive alt text to images
+
+## Best Practices
+
+### General Writing Tips
+
+- Use clear, concise language
+- Break content into logical sections with headings
+- Use visual elements (images, code blocks, lists) to enhance readability
+- Proofread your content for errors
+
+### Markdown-Specific Tips
+
+- Maintain consistent heading levels (don't skip from `#` to `###`)
+- Leave a blank line before and after blocks like lists and code blocks
+- Use reference-style links for better readability in complex documents
+
+## Troubleshooting
+
+### Common Issues
+
+- **Markdown not rendering properly**: Ensure there's a blank line between different elements
+- **Frontmatter errors**: Check for proper YAML formatting (indentation matters)
+- **Images not displaying**: Verify the image URL is correct and accessible
+
+## Examples
+
+Here are some examples combining multiple Markdown elements:
+
+### Tutorial-Style Post
+
+```markdown
+# How to Build a React Component
+
+In this tutorial, we'll create a simple React button component.
+
+## Prerequisites
+
+- Basic knowledge of React
+- Node.js installed
+
+## Step 1: Create a New Component File
+
+Create a file named `Button.jsx`:
+
+​```jsx
+import React from 'react';
+
+const Button = ({ text, onClick, variant = 'primary' }) => {
+  return (
+    <button 
+      className={`btn btn-${variant}`} 
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  );
+};
+
+export default Button;
+​```
+
+## Step 2: Import and Use the Component
+
+​```jsx
+import Button from './Button';
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Button 
+        text="Click me" 
+        onClick={() => alert('Button clicked!')} 
+      />
+    </div>
+  );
+}
+​```
+```
+
+By following this guide, you'll be able to create rich, well-formatted blog posts that engage your readers and showcase your content in the best possible way.

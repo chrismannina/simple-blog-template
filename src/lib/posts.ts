@@ -9,99 +9,74 @@ export interface PostMeta {
   coverImage?: string;
 }
 
-// This is a mock function that simulates loading posts from markdown files
-// In a real implementation, you would use a library like 'import.meta.glob'
-// or a Node.js-based solution to read files from the filesystem
+// Get all post files using Vite's import.meta.glob
+const postFiles = import.meta.glob('/src/posts/*.md', { query: '?raw', eager: false });
+
 export async function getAllPosts(): Promise<PostMeta[]> {
-  // In a real implementation, this would read files from the file system
-  const mockPosts = [
-    {
-      slug: "hello-world",
-      content: await import("@/posts/hello-world.md?raw").then(module => module.default),
-    },
-    {
-      slug: "markdown-guide",
-      content: await import("@/posts/markdown-guide.md?raw").then(module => module.default),
-    },
-    {
-      slug: "simplicity-in-design",
-      content: await import("@/posts/simplicity-in-design.md?raw").then(module => module.default),
-    },
-    {
-      slug: "web-development-trends",
-      content: await import("@/posts/web-development-trends.md?raw").then(module => module.default),
-    },
-    {
-      slug: "minimalist-workspace",
-      content: await import("@/posts/minimalist-workspace.md?raw").then(module => module.default),
-    },
-  ];
-
-  // Parse frontmatter from each post
-  const posts = mockPosts.map(({ slug, content }) => {
-    try {
-      // Parse the markdown content with gray-matter to extract frontmatter
-      const { data } = matter(content);
-      
-      // Log the extracted data for debugging
-      console.log(`Parsed frontmatter for ${slug}:`, data);
-      
-      // Ensure we extract and format metadata correctly
-      return {
-        slug,
-        title: data.title || "Untitled Post",
-        date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-        excerpt: data.excerpt || "",
-        tags: Array.isArray(data.tags) ? data.tags : [],
-        coverImage: data.coverImage || "",
-      };
-    } catch (error) {
-      console.error(`Error parsing frontmatter for ${slug}:`, error);
-      return {
-        slug,
-        title: "Untitled Post",
-        date: new Date().toISOString(),
-        excerpt: "",
-        tags: [],
-        coverImage: "",
-      };
+  try {
+    // Load all posts dynamically
+    const posts: PostMeta[] = [];
+    
+    // Process each post file
+    for (const path in postFiles) {
+      try {
+        // Extract slug from filename
+        const slug = path.split('/').pop()?.replace('.md', '');
+        
+        if (!slug) continue;
+        
+        // Load the post content
+        const content = await postFiles[path]() as { default: string };
+        
+        // Parse frontmatter
+        const { data } = matter(content.default);
+        
+        // Add to posts array
+        posts.push({
+          slug,
+          title: data.title || "Untitled Post",
+          date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+          excerpt: data.excerpt || "",
+          tags: Array.isArray(data.tags) ? data.tags : [],
+          coverImage: data.coverImage || "",
+        });
+      } catch (error) {
+        console.error(`Error processing post file ${path}:`, error);
+      }
     }
-  });
-
-  // Sort posts by date (newest first)
-  return posts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+    
+    // Sort posts by date (newest first)
+    return posts.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+  } catch (error) {
+    console.error("Error loading posts:", error);
+    return [];
+  }
 }
 
 // Get a single post by slug
 export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; content: string }> {
   try {
-    let postContent;
+    // Find the path for the requested slug
+    const postPath = Object.keys(postFiles).find(path => {
+      return path.split('/').pop()?.replace('.md', '') === slug;
+    });
     
-    // In a real implementation, you would dynamically import the post file
-    if (slug === "hello-world") {
-      postContent = await import("@/posts/hello-world.md?raw").then(module => module.default);
-    } else if (slug === "markdown-guide") {
-      postContent = await import("@/posts/markdown-guide.md?raw").then(module => module.default);
-    } else if (slug === "simplicity-in-design") {
-      postContent = await import("@/posts/simplicity-in-design.md?raw").then(module => module.default);
-    } else if (slug === "web-development-trends") {
-      postContent = await import("@/posts/web-development-trends.md?raw").then(module => module.default);
-    } else if (slug === "minimalist-workspace") {
-      postContent = await import("@/posts/minimalist-workspace.md?raw").then(module => module.default);
-    } else {
+    if (!postPath) {
       throw new Error(`Post not found: ${slug}`);
     }
     
-    // Parse the frontmatter and content using gray-matter
+    // Load the post content
+    const module = await postFiles[postPath]() as { default: string };
+    const postContent = module.default;
+    
+    // Parse the frontmatter and content
     const { data, content } = matter(postContent);
     
     const title = String(data.title || "Untitled Post");
     
     // Remove duplicate H1 title from content if it exists
-    // This regex matches an H1 title at the beginning of the content 
-    // (allowing for whitespace) that matches the title in the frontmatter
     let cleanedContent = content.trim();
     const titlePattern = new RegExp(`^\\s*# ${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*?\n`, 'i');
     cleanedContent = cleanedContent.replace(titlePattern, '');
@@ -115,7 +90,6 @@ export async function getPostBySlug(slug: string): Promise<{ meta: PostMeta; con
         tags: Array.isArray(data.tags) ? data.tags : [],
         coverImage: String(data.coverImage || ""),
       },
-      // Return only the cleaned content without the duplicate H1 title
       content: cleanedContent,
     };
   } catch (error) {

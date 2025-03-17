@@ -137,14 +137,14 @@ See the [Markdown Guide](https://www.markdownguide.org/) for more formatting opt
 vi.mock('@/posts/simplicity-in-design.md?raw', async () => {
   return {
     default: `---
-title: Customizing Your Blog Theme
-date: 2025-06-20
-excerpt: Learn how to personalize your blog with custom colors, fonts, and layout tweaks.
-tags: ['customization', 'design']
+title: Customizing Your Blog
+date: 2025-07-10
+excerpt: Learn how to personalize your blog's appearance, layout, and behavior by modifying theme settings and configuration files.
+tags: ['customization', 'theme', 'configuration']
 coverImage: https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85
 ---
 
-# Customizing Your Blog Theme
+# Customizing Your Blog
 
 This template is designed to be easily customizable without diving deep into code.
 
@@ -179,104 +179,103 @@ The template uses Tailwind CSS for styling, making it easy to tweak the design b
 vi.mock('@/posts/web-development-trends.md?raw', async () => {
   return {
     default: `---
-title: Adding Images and Media to Posts
-date: 2025-05-15
-excerpt: Learn how to include images, videos, and other media in your blog posts for a richer reader experience.
-tags: ['tutorial', 'media']
+title: Getting Started Guide
+date: 2025-07-17
+excerpt: A step-by-step guide to setting up your blog, understanding the project structure, and making your first customizations.
+tags: ['setup', 'tutorial', 'beginner']
 coverImage: https://images.unsplash.com/photo-1547658719-da2b51169166
 ---
 
-# Adding Images and Media to Posts
+# Getting Started Guide
 
-Rich media makes your blog posts more engaging. Here's how to include different types of media.
+This guide will walk you through the process of setting up your blog, understanding the project structure, and making your first customizations.
 
-## Images
+## Prerequisites
 
-Add images using standard Markdown syntax:
+Before you begin, make sure you have the following installed:
 
-\`![Alt text for the image](https://example.com/path/to/image.jpg)\`
-
-## Cover Images
-
-Each post can have a cover image by adding the \`coverImage\` property to the frontmatter:
-
-\`\`\`yaml
----
-title: My Post Title
-coverImage: https://example.com/path/to/image.jpg
----
-\`\`\`
-
-## Embedding Video
-
-While Markdown doesn't directly support video embedding, you can use HTML within your Markdown:
-
-\`\`\`html
-<iframe 
-  width="560" 
-  height="315" 
-  src="https://www.youtube.com/embed/VIDEO_ID" 
-  frameborder="0" 
-  allowfullscreen>
-</iframe>
-\`\`\`
-
-The template's Markdown renderer is configured to allow HTML, making it easy to embed various media types.`
+- **Node.js** (version 18 or later)
+- **npm** or **yarn**
+- A code editor (VS Code recommended)
+- Basic knowledge of JavaScript/TypeScript and React
+`
   }
 });
 
 vi.mock('@/posts/minimalist-workspace.md?raw', async () => {
   return {
     default: `---
+title: Writing Content with Markdown
+date: 2025-07-15
+excerpt: Learn how to format your blog posts with Markdown, add images, code blocks, and other elements to create rich, engaging content.
+tags: ['markdown', 'tutorial', 'content']
+coverImage: https://images.unsplash.com/photo-1517842645767-c639042777db
+---
+
+# Writing Content with Markdown
+
+This blog template uses Markdown for formatting blog posts. Markdown is a lightweight markup language that allows you to write formatted content using a plain-text editor. This guide will show you how to use Markdown to create beautifully formatted blog posts.
+
+## Creating a New Blog Post
+
+To create a new blog post:
+
+1. Add a new Markdown file (\.md) to the src/posts directory
+2. Include frontmatter at the top of the file
+3. Write your content using Markdown syntax
+`
+  }
+});
+
+vi.mock('@/posts/welcome.md?raw', async () => {
+  return {
+    default: `---
+title: Welcome to Your Simple Blog Template
+date: 2025-07-20
+excerpt: Get started with this modern, minimal, and customizable blog template built with React, TypeScript, and Tailwind CSS.
+tags: ['welcome', 'introduction']
+coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
+---
+
+# Welcome to Your Simple Blog Template
+
+Thanks for choosing this blog template! This modern, minimal blog platform is designed to help you share your thoughts, projects, and ideas with the world. Built with React, TypeScript, and Tailwind CSS, it offers a perfect balance of simplicity and flexibility.
+
+## Key Features
+
+- **Minimal Design**: Clean, distraction-free reading experience
+- **Dark/Light Mode**: Toggle between themes with a click
+- **Markdown Support**: Write content using simple Markdown syntax
+- **Responsive Layout**: Looks great on all devices, from mobile to desktop
+`
+  }
+});
+
+vi.mock('@/posts/modern-tech-landscape.md?raw', async () => {
+  return {
+    default: `---
 title: Deploying Your Blog
-date: 2025-04-10
-excerpt: Step-by-step guide to deploying your Simple Blog to various hosting platforms like Vercel, Netlify, or GitHub Pages.
-tags: ['deployment', 'tutorial']
+date: 2025-07-12
+excerpt: A comprehensive guide to deploying your blog to various hosting platforms including Vercel, Netlify, GitHub Pages, and more.
+tags: ['deployment', 'hosting', 'tutorial']
 coverImage: https://images.unsplash.com/photo-1497215728101-856f4ea42174
 ---
 
 # Deploying Your Blog
 
-Once you've customized your blog, you'll want to share it with the world. Here's how to deploy it to various platforms.
+After customizing your blog and creating content, the next step is to share it with the world. This guide walks you through deploying your blog to various hosting platforms, from free options to more advanced configurations.
 
-## Building for Production
+## Preparing Your Blog for Deployment
 
-First, build your project:
+Before deploying, follow these steps to prepare your blog:
 
-\`\`\`bash
-npm run build
-\`\`\`
-
-This creates optimized files in the \`dist\` directory.
-
-## Deployment Options
-
-### Vercel (Recommended)
-
-1. Install Vercel CLI: \`npm install -g vercel\`
-2. Run: \`vercel\`
-
-### Netlify
-
-1. Install Netlify CLI: \`npm install -g netlify-cli\`
-2. Run: \`netlify deploy\`
-
-### GitHub Pages
-
-Add this to your \`vite.config.ts\`:
-
-\`\`\`typescript
-export default defineConfig({
-  base: '/your-repo-name/',
-  // other config...
-})
-\`\`\`
-
-Then deploy using GitHub Actions or the gh-pages package.
-
-## Custom Domain
-
-All these platforms support custom domains. Check their documentation for setting up your domain name with your deployed blog.`
+1. **Build for production**:
+   \`\`\`bash
+   npm run build
+   # or
+   yarn build
+   \`\`\`
+`
   }
 });
 
