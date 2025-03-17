@@ -36,7 +36,7 @@ describe('BlogPost Component', () => {
       meta: {
         slug: 'hello-world',
         title: 'Hello World',
-        date: new Date('2023-07-15').toISOString(),
+        date: new Date('2025-07-15').toISOString(),
         excerpt: 'Get started with your new blog',
         tags: ['getting-started', 'tutorial'],
         coverImage: 'https://example.com/image.jpg'

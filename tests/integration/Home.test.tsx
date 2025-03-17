@@ -26,7 +26,7 @@ describe('Home Page', () => {
       {
         slug: 'hello-world',
         title: 'Hello World',
-        date: new Date('2023-07-15').toISOString(),
+        date: new Date('2025-07-15').toISOString(),
         excerpt: 'Get started with your new blog',
         tags: ['getting-started', 'tutorial'],
         coverImage: 'https://example.com/image.jpg'
@@ -34,7 +34,7 @@ describe('Home Page', () => {
       {
         slug: 'second-post',
         title: 'Second Post',
-        date: new Date('2023-07-10').toISOString(),
+        date: new Date('2025-07-10').toISOString(),
         excerpt: 'Another great post',
         tags: ['general'],
         coverImage: 'https://example.com/image2.jpg'

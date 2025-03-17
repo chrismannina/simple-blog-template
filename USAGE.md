@@ -40,7 +40,7 @@ simple-blog-template/
 ```markdown
 ---
 title: My First Blog Post
-date: 2023-09-15
+date: 2025-09-15
 excerpt: A brief summary of what this post is about.
 tags: ['beginners', 'tutorial']
 coverImage: https://example.com/image.jpg

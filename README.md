@@ -20,7 +20,7 @@ npm install
 npm run dev
 ```
 
-Visit http://localhost:5173 in your browser to see your blog.
+Visit http://localhost:8080 in your browser to see your blog.
 
 ## Features
 
@@ -59,7 +59,7 @@ yarn dev
 pnpm dev
 ```
 
-4. Open http://localhost:5173 in your browser to see the blog
+4. Open http://localhost:8080 in your browser to see the blog
 
 ## Adding Blog Posts
 
@@ -74,7 +74,7 @@ Each blog post must include frontmatter at the very top of the file. Frontmatter
 ```markdown
 ---
 title: My Awesome Blog Post
-date: 2023-08-15
+date: 2025-08-15
 excerpt: This is a short summary of my blog post that will appear in the blog listing.
 tags: ['react', 'javascript', 'tutorial']
 coverImage: https://example.com/path/to/image.jpg

@@ -1,134 +1,37 @@
 ---
-title: Markdown Formatting Guide
-date: 2023-07-16
-excerpt: Learn how to format your blog posts using Markdown syntax with this comprehensive guide.
-tags: ['markdown', 'guide', 'tutorial']
+title: How to Format Your Blog Posts
+date: 2025-07-10
+excerpt: Learn how to use Markdown to create beautifully formatted blog posts with code snippets, lists, and more.
+tags: ['markdown', 'tutorial']
+coverImage: https://images.unsplash.com/photo-1455390582262-044cdead277a
 ---
 
-# Markdown Formatting Guide
+# How to Format Your Blog Posts
 
-This guide will help you understand how to format your blog posts using Markdown syntax.
+This template uses Markdown for formatting your blog posts, making it easy to create rich content without dealing with HTML.
 
-## Headings
+## Basic Formatting
 
-You can create headings using the `#` symbol. The number of `#` symbols indicates the level of the heading.
+**Bold text** is created with `**double asterisks**`
 
-```markdown
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
-```
-
-## Text Formatting
-
-You can format text using the following syntax:
-
-- **Bold**: `**bold text**` or `__bold text__`
-- *Italic*: `*italic text*` or `_italic text_`
-- ~~Strikethrough~~: `~~strikethrough text~~`
-- `Code`: `` `code` ``
-
-## Lists
-
-### Unordered Lists
-
-You can create unordered lists using `-`, `*`, or `+`:
-
-```markdown
-- Item 1
-- Item 2
-  - Subitem 1
-  - Subitem 2
-```
-
-### Ordered Lists
-
-You can create ordered lists using numbers:
-
-```markdown
-1. First item
-2. Second item
-3. Third item
-```
-
-## Links
-
-You can create links using the following syntax:
-
-```markdown
-[Link text](https://example.com)
-```
-
-## Images
-
-You can add images using the following syntax:
-
-```markdown
-![Alt text](image-url.jpg)
-```
-
-## Blockquotes
-
-You can create blockquotes using the `>` symbol:
-
-```markdown
-> This is a blockquote.
-> It can span multiple lines.
-```
+*Italic text* uses `*single asterisks*`
 
 ## Code Blocks
 
-You can create code blocks using triple backticks (```). You can also specify the language for syntax highlighting:
-
-````markdown
 ```javascript
-function greeting(name) {
-  return `Hello, ${name}!`;
+// Syntax highlighted code blocks
+function sayHello() {
+  console.log("Hello, blog reader!");
 }
 ```
-````
 
-## Tables
+## Lists
 
-You can create tables using the following syntax:
+- Create lists with hyphens
+- Add as many items as needed
+  - Indent with two spaces for nested items
 
-```markdown
-| Header 1 | Header 2 |
-| -------- | -------- |
-| Cell 1   | Cell 2   |
-| Cell 3   | Cell 4   |
-```
+1. Numbered lists use numbers
+2. They'll automatically stay in sequence
 
-## Horizontal Rules
-
-You can create horizontal rules using three or more hyphens, asterisks, or underscores:
-
-```markdown
----
-```
-
-## Task Lists
-
-You can create task lists using the following syntax:
-
-```markdown
-- [x] Completed task
-- [ ] Incomplete task
-```
-
-## Footnotes
-
-You can create footnotes using the following syntax:
-
-```markdown
-Here's a sentence with a footnote.[^1]
-
-[^1]: This is the footnote.
-```
-
-## Happy Writing!
-
-Now that you know the basics of Markdown, you're ready to create beautifully formatted blog posts. Happy writing!
+See the [Markdown Guide](https://www.markdownguide.org/) for more formatting options.

@@ -1,14 +1,24 @@
 ---
-title: Hello, World! Welcome to Your New Blog
-date: 2023-07-15
-excerpt: Get started with your new blog template and learn how to customize it to make it your own.
-tags: ['getting-started', 'tutorial']
-coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+title: Welcome to Simple Blog Template
+date: 2025-07-15
+excerpt: Get started with this minimal, fast-loading blog template built with React, Vite, and Markdown.
+tags: ['getting-started', 'overview']
+coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 
-# Hello, World! Welcome to Your New Blog
+# Welcome to Simple Blog Template
 
-This is your first blog post. Edit or delete it, then start writing!
+This demo site lets you experience the Simple Blog Template in action. Browse around to see the features, performance, and design options available to you.
+
+## Key Features
+
+- 🚀 Fast loading with Vite
+- 📝 Write content in Markdown
+- 🎨 Clean, minimalist design
+- 🌙 Dark mode with system detection
+- 📱 Fully responsive layout
+
+Check out the other posts to learn more about customization options and how to make this template your own!
 
 ## Getting Started
 
@@ -19,7 +29,7 @@ Front matter is a YAML block that contains metadata about your post. It must be 
 ```yaml
 ---
 title: Hello, World! Welcome to Your New Blog
-date: 2023-07-15
+date: 2025-07-15
 excerpt: Get started with your new blog template and learn how to customize it to make it your own.
 tags: ['getting-started', 'tutorial']
 coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643

@@ -1,7 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vs as lightTheme, vscDarkPlus as darkTheme } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface MarkdownRendererProps {
   content: string;
@@ -16,6 +18,10 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
   // This is a safety check in case the grey-matter didn't remove it
   const cleanedContent = contentToRender.replace(/^---\s*[\s\S]*?---\s*/m, '');
   
+  // Get current theme
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+  
   return (
     <ReactMarkdown
       className={cn("prose-custom", className)}
@@ -27,11 +33,24 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
             <SyntaxHighlighter
               language={match[1]}
               PreTag="div"
+              style={isDarkMode ? darkTheme : lightTheme}
               customStyle={{
                 margin: "1.5rem 0",
+                padding: "1.25rem",
                 borderRadius: "0.5rem",
                 fontSize: "0.875rem",
-                border: "1px solid #e2e8f0",
+                border: isDarkMode ? "1px solid #2d3748" : "1px solid #cbd5e0",
+                backgroundColor: isDarkMode ? "#1a202c" : "#f0f4f8",
+                boxShadow: isDarkMode 
+                  ? "none" 
+                  : "0 2px 4px 0 rgba(0, 0, 0, 0.1)",
+                lineHeight: "1.6",
+              }}
+              codeTagProps={{
+                style: {
+                  fontFamily: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                  fontWeight: 500,
+                }
               }}
               {...props}
             >
@@ -40,7 +59,10 @@ const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) => {
           ) : (
             <code
               className={cn(
-                "bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono",
+                isDarkMode 
+                  ? "bg-gray-800 text-gray-100" 
+                  : "bg-gray-200 text-gray-800 border border-gray-300",
+                "px-2 py-1 rounded text-sm font-mono",
                 className
               )}
               {...props}
