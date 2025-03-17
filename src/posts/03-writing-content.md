@@ -1,8 +1,8 @@
 ---
 title: Writing Content with Markdown
-date: 2025-07-15
-excerpt: Learn how to format your blog posts with Markdown, add images, code blocks, and other elements to create rich, engaging content.
-tags: ['markdown', 'tutorial', 'content']
+date: 2025-03-16
+excerpt: A comprehensive guide to creating beautiful blog posts with Markdown, including formatting, media embedding, and best practices.
+tags: ['markdown', 'content', 'tutorial']
 coverImage: https://images.unsplash.com/photo-1517842645767-c639042777db
 ---
 
@@ -14,7 +14,7 @@ This blog template uses Markdown for formatting blog posts. Markdown is a lightw
 
 To create a new blog post:
 
-1. Add a new Markdown file (`.md`) to the `src/posts` directory
+1. Add a new Markdown file (`.md`) to the `src/posts` directory with a numbered prefix (e.g., `06-my-post.md`)
 2. Include frontmatter at the top of the file
 3. Write your content using Markdown syntax
 
@@ -66,6 +66,19 @@ Use `#` symbols for headings:
 ~~Strikethrough text~~
 ```
 
+*Italic text* or _italic text_  
+**Bold text** or __bold text__  
+***Bold and italic text***  
+~~Strikethrough text~~
+
+### Links
+
+```markdown
+[Link text](https://example.com)
+[Link with title](https://example.com "Title text")
+[Link to another post](/blog/04-customizing)
+```
+
 ### Lists
 
 Unordered lists:
@@ -84,13 +97,6 @@ Ordered lists:
 1. First item
 2. Second item
 3. Third item
-```
-
-### Links
-
-```markdown
-[Link text](https://example.com)
-[Link with title](https://example.com "Title text")
 ```
 
 ### Images
@@ -119,11 +125,11 @@ Use the `console.log()` function to debug.
 For code blocks, use triple backticks with an optional language identifier:
 
 ```markdown
-​```javascript
+```javascript
 function greet(name) {
   return `Hello, ${name}!`;
 }
-​```
+```
 ```
 
 Supported languages for syntax highlighting include:
@@ -145,6 +151,10 @@ Supported languages for syntax highlighting include:
 > It can span multiple lines.
 ```
 
+> This is a blockquote.
+> 
+> It can span multiple lines.
+
 ### Horizontal Rules
 
 Create a horizontal rule with three hyphens, asterisks, or underscores:
@@ -161,6 +171,11 @@ Create a horizontal rule with three hyphens, asterisks, or underscores:
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
 ```
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
 
 ### Task Lists
 
@@ -237,13 +252,19 @@ To optimize your blog posts for search engines:
 - **Frontmatter errors**: Check for proper YAML formatting (indentation matters)
 - **Images not displaying**: Verify the image URL is correct and accessible
 
-## Examples
+## Example: Tutorial-Style Post
 
-Here are some examples combining multiple Markdown elements:
-
-### Tutorial-Style Post
+Here's an example of how you might structure a tutorial:
 
 ```markdown
+---
+title: How to Build a React Component
+date: 2025-08-15
+excerpt: Learn how to create a reusable button component in React
+tags: ['react', 'tutorial', 'components']
+coverImage: https://example.com/image.jpg
+---
+
 # How to Build a React Component
 
 In this tutorial, we'll create a simple React button component.
@@ -257,7 +278,7 @@ In this tutorial, we'll create a simple React button component.
 
 Create a file named `Button.jsx`:
 
-​```jsx
+```jsx
 import React from 'react';
 
 const Button = ({ text, onClick, variant = 'primary' }) => {
@@ -272,11 +293,11 @@ const Button = ({ text, onClick, variant = 'primary' }) => {
 };
 
 export default Button;
-​```
+```
 
 ## Step 2: Import and Use the Component
 
-​```jsx
+```jsx
 import Button from './Button';
 
 function App() {
@@ -290,7 +311,14 @@ function App() {
     </div>
   );
 }
-​```
 ```
+```
+
+## Next Steps
+
+Now that you know how to write content:
+
+1. Learn how to [customize your blog](/blog/04-customizing) with themes and layouts
+2. Explore [deploying your blog](/blog/05-deploying) to various hosting platforms
 
 By following this guide, you'll be able to create rich, well-formatted blog posts that engage your readers and showcase your content in the best possible way.

@@ -1,6 +1,6 @@
 ---
 title: Customizing Your Blog
-date: 2025-07-10
+date: 2025-03-16
 excerpt: Learn how to personalize your blog's appearance, layout, and behavior by modifying theme settings and configuration files.
 tags: ['customization', 'theme', 'configuration']
 coverImage: https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85
@@ -229,5 +229,12 @@ Each page uses React Helmet for SEO. You can customize the SEO settings by modif
   <meta property="og:image" content="https://yourblog.com/og-image.jpg" />
 </Helmet>
 ```
+
+## Next Steps
+
+Now that you've learned how to customize your blog:
+
+1. Learn about [deploying your blog](/blog/05-deploying) to share it with the world
+2. Return to [writing content](/blog/03-writing-content) to create more engaging posts
 
 By following this guide, you can fully customize your blog to match your personal style and requirements without needing to modify complex code. The template's modular design makes it easy to change only what you need while keeping the rest of the functionality intact.

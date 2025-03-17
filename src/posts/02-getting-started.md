@@ -1,6 +1,6 @@
 ---
 title: Getting Started Guide
-date: 2025-07-17
+date: 2025-03-16
 excerpt: A step-by-step guide to setting up your blog, understanding the project structure, and making your first customizations.
 tags: ['setup', 'tutorial', 'beginner']
 coverImage: https://images.unsplash.com/photo-1547658719-da2b51169166
@@ -89,18 +89,16 @@ simple-blog-template/
 
 ## Creating Your First Blog Post
 
-1. **Create a new Markdown file** in the `src/posts` directory. For example, `my-first-post.md`.
+1. **Create a new Markdown file** in the `src/posts` directory. For example, `06-my-first-post.md`.
 
 2. **Add frontmatter** at the top of the file:
 
 ```markdown
----
 title: My First Blog Post
-date: 2025-08-01
-excerpt: This is my first blog post using Simple Blog Template.
+date: 2025-03-16
+excerpt: This is my first blog post using the Simple Blog template.
 tags: ['first', 'blog']
 coverImage: https://images.unsplash.com/photo-example-url
----
 ```
 
 3. **Write your content** using Markdown syntax below the frontmatter.
@@ -213,9 +211,8 @@ If you encounter issues not covered in this guide:
 
 Now that you're set up, here are some suggestions for next steps:
 
-1. **Customize your blog theme** using the configuration options
-2. **Write your first real blog post** about a topic you're passionate about
-3. **Explore the advanced features** like custom components and layouts
-4. **Set up continuous deployment** for automatic updates
+1. Explore how to write content with our [Writing Content guide](/blog/03-writing-content)
+2. Learn how to customize your blog with our [Customization guide](/blog/04-customizing)
+3. When you're ready to publish, check out our [Deployment guide](/blog/05-deploying)
 
 With this guide, you should be well on your way to creating a beautiful, functional blog with the Simple Blog Template. Happy blogging!
