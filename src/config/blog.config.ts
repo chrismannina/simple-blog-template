@@ -15,13 +15,13 @@ export const blogConfig = {
     avatar: "/avatar.png", // Place your avatar image in the public folder
     social: {
       twitter: "https://twitter.com/chrismannina",
-      github: "https://github.com/chrismannina/blogmaker-template",
+      github: "https://github.com/chrismannina/simple-blog-template",
       linkedin: "https://linkedin.com/in/chrismannina",
     },
   },
   
   // Site configuration
-  baseUrl: "https://blogmaker-template.vercel.app",
+  baseUrl: "https://simple-blog-template.vercel.app",
   locale: "en-US",
   
   // Navigation
@@ -59,8 +59,7 @@ export const blogConfig = {
   footer: {
     text: "© 2025 Simple Blog. Built with React, TypeScript, and Tailwind CSS.",
     links: [
-      { name: "GitHub", path: "https://github.com/chrismannina/blogmaker-template" },
-      { name: "License", path: "https://github.com/chrismannina/blogmaker-template/blob/main/LICENSE" },
+      { name: "License", path: "https://github.com/chrismannina/simple-blog-template/blob/main/LICENSE" },
     ],
   },
 };

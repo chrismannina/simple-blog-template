@@ -8,10 +8,11 @@ mkdir -p public
 
 # Download favicon assets
 echo "Downloading favicon assets..."
-curl -o public/favicon.svg "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/react.svg"
-curl -o public/favicon-16x16.png "https://cdn.jsdelivr.net/npm/react-icons-svg@1.0.0/build/assets/react/favicon-16x16.png"
-curl -o public/favicon-32x32.png "https://cdn.jsdelivr.net/npm/react-icons-svg@1.0.0/build/assets/react/favicon-32x32.png"
-curl -o public/apple-touch-icon.png "https://cdn.jsdelivr.net/npm/react-icons-svg@1.0.0/build/assets/react/apple-touch-icon.png"
+# Using simple blog icons instead of React icons
+curl -o public/favicon.svg "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/blogger.svg"
+curl -o public/favicon-16x16.png "https://www.svgrepo.com/download/506978/blog-16.png"
+curl -o public/favicon-32x32.png "https://www.svgrepo.com/download/506982/blog-32.png"
+curl -o public/apple-touch-icon.png "https://www.svgrepo.com/download/506981/blog-180.png"
 
 # Create web manifest
 echo "Creating web manifest..."

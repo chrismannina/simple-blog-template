@@ -1,15 +1,15 @@
 {
-  "name": "blogmaker-template",
+  "name": "simple-blog-template",
   "private": true,
   "version": "1.0.0",
   "description": "A clean, minimal blog template built with React, TypeScript, and Tailwind CSS",
   "type": "module",
   "author": "Chris Mannina",
   "license": "MIT",
-  "homepage": "https://github.com/chrismannina/blogmaker-template",
+  "homepage": "https://github.com/chrismannina/simple-blog-template",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chrismannina/blogmaker-template.git"
+    "url": "https://github.com/chrismannina/simple-blog-template.git"
   },
   "keywords": [
     "blog",
