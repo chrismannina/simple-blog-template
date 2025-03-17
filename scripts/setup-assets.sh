@@ -17,7 +17,7 @@ curl -o public/apple-touch-icon.png "https://cdn.jsdelivr.net/npm/react-icons-sv
 echo "Creating web manifest..."
 cat > public/site.webmanifest << EOL
 {
-  "name": "Simple Blog Template",
+  "name": "Simple Blog",
   "short_name": "Blog",
   "icons": [
     {
@@ -48,7 +48,7 @@ cat > public/og-image.svg << EOL
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#ffffff"/>
   <rect x="50" y="50" width="1100" height="530" fill="#f8fafc" rx="8"/>
-  <text x="600" y="250" font-family="Arial" font-size="60" text-anchor="middle" fill="#0f172a">Simple Blog Template</text>
+  <text x="600" y="250" font-family="Arial" font-size="60" text-anchor="middle" fill="#0f172a">Simple Blog</text>
   <text x="600" y="350" font-family="Arial" font-size="30" text-anchor="middle" fill="#64748b">A clean, minimal blog built with React, TypeScript, and Tailwind CSS</text>
 </svg>
 EOL

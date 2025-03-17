@@ -96,7 +96,7 @@ simple-blog-template/
 ```markdown
 title: My First Blog Post
 date: 2025-03-16
-excerpt: This is my first blog post using the Simple Blog template.
+excerpt: This is my first blog post using the Simple Blog.
 tags: ['first', 'blog']
 coverImage: https://images.unsplash.com/photo-example-url
 ```
@@ -215,4 +215,4 @@ Now that you're set up, here are some suggestions for next steps:
 2. Learn how to customize your blog with our [Customization guide](/blog/04-customizing)
 3. When you're ready to publish, check out our [Deployment guide](/blog/05-deploying)
 
-With this guide, you should be well on your way to creating a beautiful, functional blog with the Simple Blog Template. Happy blogging!
+With this guide, you should be well on your way to creating a beautiful, functional blog with the Simple Blog. Happy blogging!

@@ -1,9 +1,9 @@
-# Simple Blog Template
+# Simple Blog
 
 A clean, minimal blog template built with React, TypeScript, and Tailwind CSS. Focus on writing content with Markdown while enjoying modern development tools and a responsive design.
 
 <p align="center">
-  <img src="public/og-image.svg" alt="Simple Blog Template" width="600">
+  <img src="public/og-image.svg" alt="Simple Blog" width="600">
 </p>
 
 [**Live Demo**](https://blogmaker-template.vercel.app/)

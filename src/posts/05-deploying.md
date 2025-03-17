@@ -302,6 +302,6 @@ Congratulations! You've now completed all the guides in this blog template:
 4. [Customizing Your Blog](/blog/04-customizing) - Personalizing your site
 5. Deploying Your Blog - Sharing with the world
 
-By following these guides, you've learned how to set up, customize, create content for, and deploy your own blog using the Simple Blog Template.
+By following these guides, you've learned how to set up, customize, create content for, and deploy your own blog using the Simple Blog.
 
 For more specialized deployment requirements or advanced configurations, consult the documentation of your chosen hosting provider. 

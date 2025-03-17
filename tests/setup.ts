@@ -68,16 +68,16 @@ vi.mock('@/contexts/ThemeContext', () => {
 vi.mock('@/posts/hello-world.md?raw', async () => {
   return {
     default: `---
-title: Welcome to Simple Blog Template
+title: Welcome to Simple Blog
 date: 2025-07-15
 excerpt: Get started with this minimal, fast-loading blog template built with React, Vite, and Markdown.
 tags: ['getting-started', 'overview']
 coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 
-# Welcome to Simple Blog Template
+# Welcome to Simple Blog
 
-This demo site lets you experience the Simple Blog Template in action. Browse around to see the features, performance, and design options available to you.
+This demo site lets you experience the Simple Blog in action. Browse around to see the features, performance, and design options available to you.
 
 ## Key Features
 
@@ -230,14 +230,14 @@ To create a new blog post:
 vi.mock('@/posts/welcome.md?raw', async () => {
   return {
     default: `---
-title: Welcome to Your Simple Blog Template
+title: Welcome to Your Simple Blog
 date: 2025-07-20
 excerpt: Get started with this modern, minimal, and customizable blog template built with React, TypeScript, and Tailwind CSS.
 tags: ['welcome', 'introduction']
 coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 
-# Welcome to Your Simple Blog Template
+# Welcome to Your Simple Blog
 
 Thanks for choosing this blog template! This modern, minimal blog platform is designed to help you share your thoughts, projects, and ideas with the world. Built with React, TypeScript, and Tailwind CSS, it offers a perfect balance of simplicity and flexibility.
 

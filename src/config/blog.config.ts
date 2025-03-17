@@ -7,7 +7,7 @@
 
 export const blogConfig = {
   // Basic information
-  title: "Simple Blog Template",
+  title: "Simple Blog",
   description: "A clean, minimal blog template built with React, TypeScript, and Tailwind CSS.",
   author: {
     name: "Chris Mannina",
@@ -29,7 +29,6 @@ export const blogConfig = {
     { name: "Home", path: "/" },
     { name: "Posts", path: "/posts" },
     { name: "About", path: "/about" },
-    { name: "GitHub", path: "https://github.com/chrismannina/blogmaker-template" },
   ],
   
   // Date formatting
@@ -58,7 +57,7 @@ export const blogConfig = {
   
   // Footer
   footer: {
-    text: "© 2025 Simple Blog Template. Built with React, TypeScript, and Tailwind CSS.",
+    text: "© 2025 Simple Blog. Built with React, TypeScript, and Tailwind CSS.",
     links: [
       { name: "GitHub", path: "https://github.com/chrismannina/blogmaker-template" },
       { name: "License", path: "https://github.com/chrismannina/blogmaker-template/blob/main/LICENSE" },

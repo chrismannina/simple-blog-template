@@ -1,6 +1,6 @@
-# Using Simple Blog Template
+# Using Simple Blog
 
-This guide provides detailed instructions for using and customizing the Simple Blog Template.
+This guide provides detailed instructions for using and customizing the Simple Blog.
 
 ## Table of Contents
 

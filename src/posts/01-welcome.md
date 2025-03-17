@@ -1,18 +1,18 @@
 ---
-title: Welcome to Simple Blog Template
+title: Welcome to Simple Blog
 date: 2025-03-16
 excerpt: Get started with this modern, minimal, and customizable blog template built with React, TypeScript, and Tailwind CSS.
 tags: ['welcome', 'introduction']
 coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 
-# Welcome to Simple Blog Template
+# Welcome to Simple Blog
 
-Thanks for choosing Simple Blog Template! This modern, minimal blog platform is designed to help you share your thoughts, projects, and ideas with the world. Built with React, TypeScript, and Tailwind CSS, it offers a perfect balance of simplicity and flexibility.
+Thanks for choosing Simple Blog! This modern, minimal blog platform is designed to help you share your thoughts, projects, and ideas with the world. Built with React, TypeScript, and Tailwind CSS, it offers a perfect balance of simplicity and flexibility.
 
-## What is Simple Blog Template?
+## What is Simple Blog?
 
-Simple Blog Template is a ready-to-use blog starter that prioritizes:
+Simple Blog is a ready-to-use blog starter that prioritizes:
 
 - ⚡ **Performance** - Built with React and Vite for lightning-fast loading
 - 📝 **Simplicity** - Write content in Markdown, focus on writing not configuration
