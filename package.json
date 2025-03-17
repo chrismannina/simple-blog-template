@@ -30,7 +30,9 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "prepare": "bash scripts/setup-assets.sh",
-    "deploy:vercel": "vercel"
+    "deploy:vercel": "vercel deploy --prod",
+    "ci:test": "npm run test && npm run lint",
+    "ci:deploy": "npm run test && npm run build && npm run deploy:vercel"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
