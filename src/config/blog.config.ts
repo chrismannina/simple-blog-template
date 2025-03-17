@@ -21,7 +21,7 @@ export const blogConfig = {
   },
   
   // Site configuration
-  baseUrl: "https://simple-blog-template.vercel.app",
+  baseUrl: "https://simple-blog-beta-lilac.vercel.app",
   locale: "en-US",
   
   // Navigation

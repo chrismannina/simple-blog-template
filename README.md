@@ -2,7 +2,7 @@
 
 A clean, minimal blog template built with React, TypeScript, and Tailwind CSS. Focus on writing content with Markdown while enjoying modern development tools and a responsive design.
 
-[**Live Demo**](https://simple-blog-template.vercel.app/)
+[**Live Demo**](https://simple-blog-beta-lilac.vercel.app/)
 
 ## ✨ Features
 
@@ -136,11 +136,11 @@ vercel
 
 The blog itself contains comprehensive documentation:
 
-1. [Welcome](https://simple-blog-template.vercel.app/blog/01-welcome) - Introduction
-2. [Getting Started](https://simple-blog-template.vercel.app/blog/02-getting-started) - Setup guide
-3. [Writing Content](https://simple-blog-template.vercel.app/blog/03-writing-content) - Creating posts
-4. [Customizing](https://simple-blog-template.vercel.app/blog/04-customizing) - Personalization
-5. [Deploying](https://simple-blog-template.vercel.app/blog/05-deploying) - Publishing your blog
+1. [Welcome](https://simple-blog-beta-lilac.vercel.app/blog/01-welcome) - Introduction
+2. [Getting Started](https://simple-blog-beta-lilac.vercel.app/blog/02-getting-started) - Setup guide
+3. [Writing Content](https://simple-blog-beta-lilac.vercel.app/blog/03-writing-content) - Creating posts
+4. [Customizing](https://simple-blog-beta-lilac.vercel.app/blog/04-customizing) - Personalization
+5. [Deploying](https://simple-blog-beta-lilac.vercel.app/blog/05-deploying) - Publishing your blog
 
 Additional documentation in the [USAGE.md](./USAGE.md) file.
 
