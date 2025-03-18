@@ -14,7 +14,7 @@ export const blogConfig = {
     bio: "Software developer passionate about creating lightweight, easy-to-use blog templates.",
     avatar: "/author-silhouette.svg",
     social: {
-      twitter: "https://twitter.com/chrismannina",
+      twitter: "https://twitter.com/ccmannina",
       github: "https://github.com/chrismannina/simple-blog-template",
       linkedin: "https://linkedin.com/in/chrismannina",
     },
