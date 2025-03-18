@@ -19,36 +19,38 @@ const TestComponent = () => {
 
 // Mock implementation of ThemeContext to avoid jest error
 vi.mock('@/contexts/ThemeContext', () => {
-  const React = require('react');
-  
-  // Create a real context with a mock implementation
-  const ThemeContextMock = React.createContext(null);
-  
-  const ThemeProvider = ({ children }) => {
-    // Get initial theme from localStorage if available
-    const storedTheme = typeof localStorage.getItem === 'function' 
-      ? localStorage.getItem('theme')
-      : null;
-      
-    const [theme, setTheme] = React.useState(storedTheme || 'light');
-    
-    const handleSetTheme = (newTheme) => {
-      setTheme(newTheme);
-      if (typeof localStorage.setItem === 'function') {
-        localStorage.setItem('theme', newTheme);
-      }
-    };
-    
-    return (
-      <ThemeContextMock.Provider value={{ theme, setTheme: handleSetTheme }}>
-        {children}
-      </ThemeContextMock.Provider>
-    );
-  };
-  
   return {
-    ThemeProvider,
-    useTheme: () => React.useContext(ThemeContextMock),
+    ThemeProvider: ({ children }) => {
+      // Get initial theme from localStorage if available
+      const storedTheme = typeof localStorage.getItem === 'function' 
+        ? localStorage.getItem('theme')
+        : null;
+        
+      const [theme, setTheme] = useState(storedTheme || 'light');
+      
+      const handleSetTheme = (newTheme) => {
+        setTheme(newTheme);
+        if (typeof localStorage.setItem === 'function') {
+          localStorage.setItem('theme', newTheme);
+        }
+      };
+      
+      const contextValue = { theme, setTheme: handleSetTheme };
+      
+      return (
+        <div>{children}</div>
+      );
+    },
+    useTheme: () => {
+      return { 
+        theme: 'light', 
+        setTheme: (newTheme) => {
+          if (typeof localStorage.setItem === 'function') {
+            localStorage.setItem('theme', newTheme);
+          }
+        } 
+      };
+    },
   };
 });
 

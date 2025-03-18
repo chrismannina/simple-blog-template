@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../../src/contexts/ThemeContext';
 import Home from '../../src/pages/Home';
 import { getAllPosts } from '../../src/lib/posts';
+import { MockedFunction } from 'vitest';
 
 // Mock the getAllPosts function
 vi.mock('../../src/lib/posts', () => ({
@@ -23,7 +24,7 @@ describe('Home Page', () => {
     vi.resetAllMocks();
     
     // Mock the getAllPosts function to return test data
-    (getAllPosts as any).mockResolvedValue([
+    (getAllPosts as MockedFunction<typeof getAllPosts>).mockResolvedValue([
       {
         slug: 'hello-world',
         title: 'Hello World',
@@ -66,7 +67,7 @@ describe('Home Page', () => {
 
   it('should display loading state initially', async () => {
     // Mock delay for the getAllPosts function
-    (getAllPosts as any).mockImplementation(() => {
+    (getAllPosts as MockedFunction<typeof getAllPosts>).mockImplementation(() => {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve([]);

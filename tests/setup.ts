@@ -220,7 +220,7 @@ This blog template uses Markdown for formatting blog posts. Markdown is a lightw
 
 To create a new blog post:
 
-1. Add a new Markdown file (\.md) to the src/posts directory
+1. Add a new Markdown file (.md) to the src/posts directory
 2. Include frontmatter at the top of the file
 3. Write your content using Markdown syntax
 `
@@ -230,64 +230,25 @@ To create a new blog post:
 vi.mock('@/posts/welcome.md?raw', async () => {
   return {
     default: `---
-title: Welcome to Your Simple Blog
-date: 2025-07-20
-excerpt: Get started with this modern, minimal, and customizable blog template built with React, TypeScript, and Tailwind CSS.
-tags: ['welcome', 'introduction']
+title: Welcome to Simple Blog
+date: 2025-07-15
+excerpt: Get started with this minimal, fast-loading blog template built with React, Vite, and Markdown.
+tags: ['getting-started', 'overview']
 coverImage: https://images.unsplash.com/photo-1499750310107-5fef28a66643
 ---
 
-# Welcome to Your Simple Blog
+# Welcome to Simple Blog
 
-Thanks for choosing this blog template! This modern, minimal blog platform is designed to help you share your thoughts, projects, and ideas with the world. Built with React, TypeScript, and Tailwind CSS, it offers a perfect balance of simplicity and flexibility.
+This demo site lets you experience the Simple Blog in action. Browse around to see the features, performance, and design options available to you.
 
 ## Key Features
 
-- **Minimal Design**: Clean, distraction-free reading experience
-- **Dark/Light Mode**: Toggle between themes with a click
-- **Markdown Support**: Write content using simple Markdown syntax
-- **Responsive Layout**: Looks great on all devices, from mobile to desktop
-`
+- 🚀 Fast loading with Vite
+- 📝 Write content in Markdown
+- 🎨 Clean, minimalist design
+- 🌙 Dark mode with system detection
+- 📱 Fully responsive layout
+
+Check out the other posts to learn more about customization options and how to make this template your own!`
   }
 });
-
-vi.mock('@/posts/modern-tech-landscape.md?raw', async () => {
-  return {
-    default: `---
-title: Deploying Your Blog
-date: 2025-07-12
-excerpt: A comprehensive guide to deploying your blog to various hosting platforms including Vercel, Netlify, GitHub Pages, and more.
-tags: ['deployment', 'hosting', 'tutorial']
-coverImage: https://images.unsplash.com/photo-1497215728101-856f4ea42174
----
-
-# Deploying Your Blog
-
-After customizing your blog and creating content, the next step is to share it with the world. This guide walks you through deploying your blog to various hosting platforms, from free options to more advanced configurations.
-
-## Preparing Your Blog for Deployment
-
-Before deploying, follow these steps to prepare your blog:
-
-1. **Build for production**:
-   \`\`\`bash
-   npm run build
-   # or
-   yarn build
-   \`\`\`
-`
-  }
-});
-
-// Mock for react-router-dom
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
-  return {
-    ...actual,
-    useParams: () => ({
-      slug: 'hello-world',
-    }),
-    useNavigate: () => vi.fn(),
-    BrowserRouter: ({ children }: { children: React.ReactNode }) => React.createElement('div', null, children),
-  };
-}); 

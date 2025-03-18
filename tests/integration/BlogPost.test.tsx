@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../../src/contexts/ThemeContext';
 import BlogPost from '../../src/pages/BlogPost';
 import { getPostBySlug } from '../../src/lib/posts';
+import { MockedFunction } from 'vitest';
 
 // Mock the getPostBySlug function
 vi.mock('../../src/lib/posts', () => ({
@@ -33,7 +34,7 @@ describe('BlogPost Component', () => {
     vi.resetAllMocks();
     
     // Mock the getPostBySlug function to return test data
-    (getPostBySlug as any).mockResolvedValue({
+    (getPostBySlug as MockedFunction<typeof getPostBySlug>).mockResolvedValue({
       meta: {
         slug: 'hello-world',
         title: 'Hello World',
@@ -69,7 +70,7 @@ describe('BlogPost Component', () => {
 
   it('should display loading state initially', async () => {
     // Mock delay for the getPostBySlug function
-    (getPostBySlug as any).mockImplementation(() => {
+    (getPostBySlug as MockedFunction<typeof getPostBySlug>).mockImplementation(() => {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve({
@@ -130,7 +131,7 @@ describe('BlogPost Component', () => {
 
   it('should handle error state', async () => {
     // Mock an error for this test
-    (getPostBySlug as any).mockRejectedValue(new Error('Post not found'));
+    (getPostBySlug as MockedFunction<typeof getPostBySlug>).mockRejectedValue(new Error('Post not found'));
     
     await act(async () => {
       render(
