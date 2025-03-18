@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 import { blogConfig } from "@/config/blog.config";
 import { createPageTitle } from "@/lib/utils";
 import BlogLayout from "@/components/BlogLayout";
@@ -71,15 +70,6 @@ const About = () => {
               <li>Fast performance and SEO-friendly</li>
               <li>Dark mode support with system preference detection</li>
             </ul>
-            
-            <div className="mt-8">
-              <Link
-                to="/"
-                className="inline-flex items-center px-4 py-2 text-sm rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                Back to Home
-              </Link>
-            </div>
           </div>
         </div>
       </section>
